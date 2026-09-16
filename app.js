@@ -68,7 +68,8 @@
   // modo, que apaga cada escritura de estado.
   let frontMatterMode = false;
 
-  $("chapterCount").textContent = data.chapters.length;
+  // el hero cuenta capítulos, no pistas: los interludios se cuentan aparte
+  $("chapterCount").textContent = data.chapters.filter(c => !c.label).length;
   $("year").textContent = new Date().getFullYear();
   buildSpeedWheel();
   renderChapters();
@@ -344,9 +345,9 @@
           ? "Archivo de audio no encontrado"
           : index === selectedIndex && !frontMatterMode && !elements.audio.paused
             ? "Reproduciendo ahora"
-            : "Capítulo " + chapter.number + (getChapterSeconds(index) ? " · " + formatLong(getChapterSeconds(index)) : "");
+            : (chapter.label || "Capítulo " + chapter.number) + (getChapterSeconds(index) ? " · " + formatLong(getChapterSeconds(index)) : "");
         button.innerHTML = `
-          <span class="chapter-number">${String(chapter.number).padStart(2, "0")}</span>
+          <span class="chapter-number">${escapeHtml(chapter.badge || String(chapter.number).padStart(2, "0"))}</span>
           <span class="chapter-copy">
             <strong>${escapeHtml(chapter.title)}</strong>
             <span>${detalle}</span>
@@ -361,7 +362,7 @@
         doneToggle.type = "button";
         doneToggle.className = `chapter-done-toggle${isDone ? " done" : ""}`;
         doneToggle.setAttribute("aria-pressed", String(isDone));
-        doneToggle.setAttribute("aria-label", `${isDone ? "Desmarcar" : "Marcar"} capítulo ${chapter.number} como terminado`);
+        doneToggle.setAttribute("aria-label", `${isDone ? "Desmarcar" : "Marcar"} ${chapter.label || "capítulo " + chapter.number} como terminado`);
         doneToggle.title = isDone ? "Marcado como terminado" : "Marcar como terminado";
         doneToggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6"/></svg>';
         doneToggle.addEventListener("click", event => {
@@ -384,8 +385,10 @@
     const groups = partGroups().filter(group => group.part);
     if (!grid.children.length) {
       groups.forEach(group => {
-        const first = data.chapters[group.items[0]].number;
-        const last = data.chapters[group.items[group.items.length - 1]].number;
+        // los interludios no entran en el rango: "Capítulos 27 a 42", no "a 103"
+        const nums = group.items.map(i => data.chapters[i]).filter(c => !c.label).map(c => c.number);
+        const first = nums[0];
+        const last = nums[nums.length - 1];
         const card = document.createElement("button");
         card.type = "button";
         card.className = "part-card";
@@ -407,7 +410,10 @@
       const seconds = group.items.reduce((sum, i) => sum + getChapterSeconds(i), 0);
       const progress = group.items.reduce((sum, i) => sum + getChapterProgress(i), 0) / group.items.length;
       const done = group.items.filter(i => state.completed[i]).length;
-      card.querySelector("[data-meta]").textContent = `${group.items.length} capítulos · ${formatLong(seconds)}`;
+      const inter = group.items.filter(i => data.chapters[i].label).length;
+      const caps = group.items.length - inter;
+      const cuenta = inter ? `${caps} capítulos y ${inter} interludios` : `${caps} capítulos`;
+      card.querySelector("[data-meta]").textContent = `${cuenta} · ${formatLong(seconds)}`;
       card.querySelector("[data-bar]").style.width = `${progress * 100}%`;
       card.querySelector("[data-done]").textContent = done === group.items.length
         ? "Parte terminada"
@@ -498,16 +504,19 @@
 
   function updateChapterLabels() {
     const chapter = data.chapters[selectedIndex];
-    const numero = String(chapter.number).padStart(2, "0");
-    elements.playerChapter.textContent = `Capítulo ${chapter.number}`;
+    // los interludios traen label/badge propios: nunca dicen "Capítulo 101"
+    const numero = chapter.badge || String(chapter.number).padStart(2, "0");
+    const rotulo = chapter.label || `Capítulo ${chapter.number}`;
+    elements.playerChapter.textContent = rotulo;
     elements.playerTitle.textContent = chapter.title;
     elements.playerNumber.textContent = numero;
     elements.nowTitle.textContent = chapter.title;
     elements.nowPart.textContent = chapter.part || data.site.volume;
-    elements.nowArtLabel.textContent = "Capítulo";
+    elements.nowArtLabel.textContent = chapter.label ? "Interludio" : "Capítulo";
     elements.nowNumber.textContent = numero;
     const stored = Number(state.times[selectedIndex] || 0);
-    elements.resumeButton.textContent = stored > 5 ? `▶ Continuar capítulo ${chapter.number}` : `▶ Escuchar capítulo ${chapter.number}`;
+    const minuscula = rotulo.charAt(0).toLowerCase() + rotulo.slice(1);
+    elements.resumeButton.textContent = `${stored > 5 ? "▶ Continuar" : "▶ Escuchar"} ${minuscula}`;
   }
 
   function togglePlay() {
