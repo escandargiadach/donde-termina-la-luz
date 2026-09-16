@@ -14,6 +14,12 @@ window.BOOK_DATA = {
   // Retratos. "unlock" es el capitulo en el que el libro NOMBRA por primera vez
   // a ese personaje (verificado sobre el manuscrito V6): hasta llegar ahi la
   // tarjeta va bloqueada y ni el nombre ni la imagen entran en el HTML.
+  // Retratos de grupo: una sola imagen ancha que se abre en grande, con los
+  // nombres al pie. Mismo bloqueo por capitulo que los retratos sueltos.
+  groups: [
+    { id: "dientes", name: "Dientes de Ceniza", file: "assets/personajes/dientes-de-ceniza.webp", w: 4320, h: 2160, unlock: 25,
+      caption: "Hal'Verkan · Dra'Vik · Rask · Bryn'Veth · Tor'Vaer · Yorn'Taz" }
+  ],
   characters: [
     { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1200, unlock: 1 },
     { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1200, unlock: 1 },

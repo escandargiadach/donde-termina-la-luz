@@ -106,6 +106,12 @@
     elements.mobileMenu.addEventListener("click", (event) => { if (event.target.tagName === "A") closeMenu(); });
     elements.offlineButton.addEventListener("click", saveCurrentAudioOffline);
     document.getElementById("spoilerToggle")?.addEventListener("click", toggleSpoilers);
+    document.getElementById("castGrid")?.addEventListener("click", event => {
+      const g = event.target.closest(".cast-group:not(.locked)");
+      if (!g) return;
+      const src = g.querySelector("[data-abrir]")?.dataset.abrir || g.querySelector("img")?.getAttribute("src");
+      if (src) abrirLupa(src);
+    });
 
     elements.audio.addEventListener("loadedmetadata", onLoadedMetadata);
     elements.audio.addEventListener("timeupdate", onTimeUpdate);
@@ -409,12 +415,45 @@
           <span class="cast-locked-art" aria-hidden="true">✦</span>
           <figcaption><strong aria-label="Personaje aún no revelado">? ? ?</strong><span>Se revela más adelante</span></figcaption>
         </figure>`).join("");
+    // retratos de grupo: una sola imagen ancha, que se abre en grande al tocarla
+    const grupos = Array.isArray(data.groups) ? data.groups : [];
+    const htmlGrupos = grupos.map(g => (!proteger || chapterReached(g.unlock))
+      ? `<figure class="cast-card cast-group">
+          <img src="${g.file}" alt="${escapeHtml(g.name)}: ${escapeHtml(g.caption || "")}" width="${g.w}" height="${g.h}" loading="lazy" decoding="async">
+          <figcaption><strong>${escapeHtml(g.name)}</strong>${g.caption ? `<span>${escapeHtml(g.caption)}</span>` : ""}</figcaption>
+          <button class="cast-lupa" type="button" data-abrir="${g.file}" aria-label="Ver ${escapeHtml(g.name)} en grande">⤢</button>
+        </figure>`
+      : `<figure class="cast-card cast-group locked">
+          <span class="cast-locked-art" aria-hidden="true">✦</span>
+          <figcaption><strong aria-label="Grupo aún no revelado">? ? ?</strong><span>Se revela más adelante</span></figcaption>
+        </figure>`).join("");
+
     // updateOverallProgress corre en cada avance del audio: repintar solo si algo
     // cambio, para no pelear con la reproduccion en el telefono.
-    if (grid.dataset.firma !== html) {
-      grid.innerHTML = html;
-      grid.dataset.firma = html;
+    const todo = html + htmlGrupos;
+    if (grid.dataset.firma !== todo) {
+      grid.innerHTML = todo;
+      grid.dataset.firma = todo;
     }
+  }
+
+  // Abre una imagen a pantalla completa. Se cierra con Esc (lo hace <dialog>),
+  // tocando fuera, o con el boton.
+  function abrirLupa(src) {
+    let dlg = document.getElementById("lupa");
+    if (!dlg) {
+      dlg = document.createElement("dialog");
+      dlg.id = "lupa";
+      dlg.innerHTML = '<img alt=""><button type="button" aria-label="Cerrar">×</button>';
+      dlg.addEventListener("click", event => {
+        if (event.target === dlg || event.target.tagName === "BUTTON") dlg.close();
+      });
+      document.body.appendChild(dlg);
+    }
+    const img = dlg.querySelector("img");
+    img.src = src;
+    img.alt = "";
+    dlg.showModal();
   }
 
   // Interruptor de anti-spoiler. Por defecto protege; quien ya leyo el libro (o

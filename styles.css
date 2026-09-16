@@ -202,6 +202,21 @@ main{width:min(1460px,100%);margin:0 auto}
 .spoiler-text span{max-width:34ch;color:var(--muted);font-size:12px;line-height:1.5}
 @media(max-width:620px){.spoiler-toggle{width:100%}}
 
+/* Retrato de grupo: ocupa la fila entera y se abre en grande al tocarlo. */
+.cast-group{grid-column:1/-1;cursor:zoom-in}
+.cast-group img{aspect-ratio:2/1;object-position:50% 50%}
+.cast-group figcaption{padding:52px 24px 20px}
+.cast-group figcaption span{color:var(--muted);font-size:12px;letter-spacing:.04em;text-transform:none;font-weight:400}
+.cast-lupa{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:rgba(8,16,24,.72);color:var(--ink);font-size:17px;line-height:1;cursor:zoom-in}
+.cast-lupa:hover{border-color:rgba(143,209,231,.45)}
+.cast-group.locked{aspect-ratio:2/1;cursor:default}
+.cast-group.locked img{display:none}
+dialog#lupa{max-width:96vw;max-height:96vh;padding:0;border:0;border-radius:12px;background:transparent;overflow:visible}
+dialog#lupa::backdrop{background:rgba(3,7,12,.92)}
+dialog#lupa img{display:block;max-width:96vw;max-height:92vh;width:auto;height:auto;border-radius:10px}
+dialog#lupa button{position:absolute;top:-6px;right:-6px;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:#0b1520;color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
+@media(max-width:620px){.cast-group figcaption{padding:44px 16px 16px}.cast-lupa{top:10px;right:10px}}
+
 /* Tarjeta bloqueada: ni cara ni nombre hasta que el libro lo presente. */
 .cast-card.locked{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:2/3;background:linear-gradient(160deg,rgba(18,38,54,.85),rgba(8,16,24,.92))}
 .cast-card.locked:hover{transform:none;box-shadow:none;border-color:var(--line)}
