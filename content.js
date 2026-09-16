@@ -40,6 +40,7 @@ window.BOOK_DATA = {
     { id: "ansel", name: "Ansel Nahl", file: "assets/personajes/ansel-nahl.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
     { id: "jun", name: "Jun Arven", file: "assets/personajes/jun-arven.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "tomas", name: "Tomas Eiden", file: "assets/personajes/tomas-eiden.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
+    { id: "vera", name: "Vera Helion", file: "assets/personajes/vera-helion.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "nila", name: "Nila Sorn", file: "assets/personajes/nila-sorn.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "iris", name: "Iris Veyra", file: "assets/personajes/iris-veyra.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "scar", name: "Scar", file: "assets/personajes/scar.webp", w: 900, h: 1350, unlock: 16, section: "cam17" },
