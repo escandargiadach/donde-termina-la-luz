@@ -37,6 +37,8 @@ window.BOOK_DATA = {
     { id: "lina", name: "Lina Aurelian", file: "assets/personajes/lina-aurelian.webp", w: 900, h: 1348, unlock: 1, section: "cam17" },
     { id: "daren", name: "Daren de Vries", file: "assets/personajes/daren-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
     { id: "elias", name: "Elías Sevrin", file: "assets/personajes/elias-sevrin.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
+    { id: "ansel", name: "Ansel Nahl", file: "assets/personajes/ansel-nahl.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
+    { id: "scar", name: "Scar", file: "assets/personajes/scar.webp", w: 900, h: 1350, unlock: 16, section: "cam17" },
     { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20, section: "fulgur" },
     { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1350, unlock: 23, section: "eternum" },
     { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
