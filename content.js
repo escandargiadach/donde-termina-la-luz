@@ -11,6 +11,14 @@ window.BOOK_DATA = {
     audioVersion: 2,
     frontMatter: { title: "Presentación", kicker: "Antes de empezar", file: "00-donde-termina-la-luz.mp3", seconds: 7 }
   },
+  // Retratos. "unlock" es el capitulo en el que el libro NOMBRA por primera vez
+  // a ese personaje (verificado sobre el manuscrito V6): hasta llegar ahi la
+  // tarjeta va bloqueada y ni el nombre ni la imagen entran en el HTML.
+  characters: [
+    { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1195, unlock: 23 },
+    { id: "yseva", name: "Yseva Soryn", epithet: "El Astrónomo de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1125, unlock: 31 },
+    { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1174, unlock: 31 }
+  ],
   chapters: [
     { number: 1, title: "El héroe de CAM-17", part: "Parte I", file: "01-el-heroe-de-cam-17.mp3", seconds: 2121 },
     { number: 2, title: "Memoria de hielo", part: "Parte I", file: "02-memoria-de-hielo.mp3", seconds: 1350 },

@@ -202,6 +202,14 @@ main{width:min(1460px,100%);margin:0 auto}
 .cast-card strong{font:500 26px/1.1 var(--serif);color:var(--ink)}
 .cast-card figcaption span{color:var(--ice);font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
 
+/* Tarjeta bloqueada: ni cara ni nombre hasta que el libro lo presente. */
+.cast-card.locked{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/4;background:linear-gradient(160deg,rgba(18,38,54,.85),rgba(8,16,24,.92))}
+.cast-card.locked:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.cast-locked-art{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(38px,5vw,60px);color:rgba(143,209,231,.22)}
+.cast-card.locked figcaption{position:static;background:none;padding:0 22px 22px}
+.cast-card.locked strong{font-size:22px;letter-spacing:.3em;color:var(--muted)}
+.cast-card.locked figcaption span{color:rgba(137,162,178,.75)}
+
 .saga-section{padding-top:30px;border-top:0}
 .saga-card{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:clamp(32px,5vw,64px);border-radius:28px;background:linear-gradient(135deg,rgba(14,30,44,.78),rgba(26,60,82,.5))}
 .saga-card h2{margin:0;font:500 clamp(38px,5vw,64px)/1.05 var(--serif);letter-spacing:-.04em;color:var(--ink)}

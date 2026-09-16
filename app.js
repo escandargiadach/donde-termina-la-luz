@@ -74,6 +74,7 @@
   buildSpeedWheel();
   renderChapters();
   renderParts();
+  renderCast();
   selectChapter(selectedIndex, false, true);
   bindEvents();
   updateOverallProgress();
@@ -379,6 +380,37 @@
 
   // Tarjetas de las cuatro partes: se construyen una vez y despues solo se
   // actualizan los numeros, asi el foco del teclado no salta mientras suena.
+  // Retratos de personajes. Van bloqueados hasta que el oyente llega al capitulo
+  // donde el libro NOMBRA por primera vez a ese personaje. Mientras esta
+  // bloqueado no se inserta ni el nombre ni la imagen: si estuvieran en el HTML
+  // se leerian en el codigo fuente y los cantaria un lector de pantalla, que es
+  // justo el spoiler que se quiere evitar.
+  function chapterReached(number) {
+    const index = data.chapters.findIndex(c => c.number === number);
+    if (index < 0) return true;   // si ese capitulo no existe, no se oculta nada
+    return !!state.completed[index] || Number(state.times[index] || 0) > 0;
+  }
+
+  function renderCast() {
+    const grid = document.getElementById("castGrid");
+    if (!grid || !Array.isArray(data.characters)) return;
+    const html = data.characters.map(p => chapterReached(p.unlock)
+      ? `<figure class="cast-card">
+          <img src="${p.file}" alt="Retrato de ${escapeHtml(p.name)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async">
+          <figcaption><strong>${escapeHtml(p.name)}</strong><span>${escapeHtml(p.epithet)}</span></figcaption>
+        </figure>`
+      : `<figure class="cast-card locked">
+          <span class="cast-locked-art" aria-hidden="true">✦</span>
+          <figcaption><strong aria-label="Personaje aún no revelado">? ? ?</strong><span>Se revela más adelante</span></figcaption>
+        </figure>`).join("");
+    // updateOverallProgress corre en cada avance del audio: repintar solo si algo
+    // cambio, para no pelear con la reproduccion en el telefono.
+    if (grid.dataset.firma !== html) {
+      grid.innerHTML = html;
+      grid.dataset.firma = html;
+    }
+  }
+
   function renderParts() {
     const grid = elements.partGrid;
     if (!grid) return;
@@ -652,6 +684,7 @@
     elements.overallPercent.textContent = `${percent}%`;
     updateBookTime();
     renderParts();
+    renderCast();
   }
 
   // Duracion de un capitulo: la medida por el navegador si ya cargo ese audio;
