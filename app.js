@@ -403,7 +403,7 @@
     const html = data.characters.map(p => (!proteger || chapterReached(p.unlock))
       ? `<figure class="cast-card">
           <img src="${p.file}" alt="Retrato de ${escapeHtml(p.name)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async">
-          <figcaption><strong>${escapeHtml(p.name)}</strong><span>${escapeHtml(p.epithet)}</span></figcaption>
+          <figcaption><strong>${escapeHtml(p.name)}</strong>${p.epithet ? `<span>${escapeHtml(p.epithet)}</span>` : ""}</figcaption>
         </figure>`
       : `<figure class="cast-card locked">
           <span class="cast-locked-art" aria-hidden="true">✦</span>

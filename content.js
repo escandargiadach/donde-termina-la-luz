@@ -15,6 +15,9 @@ window.BOOK_DATA = {
   // a ese personaje (verificado sobre el manuscrito V6): hasta llegar ahi la
   // tarjeta va bloqueada y ni el nombre ni la imagen entran en el HTML.
   characters: [
+    { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1200, unlock: 1 },
+    { id: "kier", name: "Kier de Vries", file: "assets/personajes/kier-de-vries.webp", w: 900, h: 1199, unlock: 1 },
+    { id: "lina", name: "Lina Aurelian", file: "assets/personajes/lina-aurelian.webp", w: 900, h: 1198, unlock: 1 },
     { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1195, unlock: 23 },
     { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1125, unlock: 31 },
     { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1174, unlock: 31 }
