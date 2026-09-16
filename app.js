@@ -799,7 +799,12 @@
       title: chapter.title,
       artist: data.site.author,
       album: `${data.site.book} · ${data.site.volume}`,
-      artwork: [{ src: new URL("assets/icons/icon.svg", window.location.href).href, sizes: "512x512", type: "image/svg+xml" }]
+      artwork: [
+        // la portada, para la pantalla de bloqueo del telefono. El png va de
+        // respaldo: no todos los navegadores aceptan webp en el artwork.
+        { src: new URL("assets/portada/caratula-512.webp", window.location.href).href, sizes: "512x512", type: "image/webp" },
+        { src: new URL("assets/portada/caratula-512.png", window.location.href).href, sizes: "512x512", type: "image/png" }
+      ]
     });
     const actions = {
       play: () => elements.audio.play(), pause: () => elements.audio.pause(),
