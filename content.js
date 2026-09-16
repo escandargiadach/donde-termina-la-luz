@@ -38,6 +38,7 @@ window.BOOK_DATA = {
     { id: "daren", name: "Daren de Vries", file: "assets/personajes/daren-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
     { id: "elias", name: "Elías Sevrin", file: "assets/personajes/elias-sevrin.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
     { id: "ansel", name: "Ansel Nahl", file: "assets/personajes/ansel-nahl.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
+    { id: "jun", name: "Jun Arven", file: "assets/personajes/jun-arven.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "tomas", name: "Tomas Eiden", file: "assets/personajes/tomas-eiden.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "scar", name: "Scar", file: "assets/personajes/scar.webp", w: 900, h: 1350, unlock: 16, section: "cam17" },
     { id: "maelis", name: "Maelis Varen", file: "assets/personajes/maelis-varen.webp", w: 900, h: 1350, unlock: 36, section: "cam17" },
