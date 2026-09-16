@@ -22,10 +22,11 @@ window.BOOK_DATA = {
   ],
   characters: [
     { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1350, unlock: 1 },
-    { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1350, unlock: 1 },
+    { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1348, unlock: 1 },
     { id: "kier", name: "Kier de Vries", file: "assets/personajes/kier-de-vries.webp", w: 900, h: 1351, unlock: 1 },
     { id: "lina", name: "Lina Aurelian", file: "assets/personajes/lina-aurelian.webp", w: 900, h: 1348, unlock: 1 },
     { id: "daren", name: "Daren de Vries", file: "assets/personajes/daren-de-vries.webp", w: 900, h: 1350, unlock: 1 },
+    { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20 },
     { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1195, unlock: 23 },
     { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1125, unlock: 31 },
     { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1174, unlock: 31 }
