@@ -1,6 +1,6 @@
 // REGLA (heredada del Libro I): todo cambio a index.html, styles.css, content.js,
 // app.js o nieve.js exige subir SHELL_CACHE antes de publicar.
-const SHELL_CACHE = "el-ciclo-inmovil-libro2-shell-v4";
+const SHELL_CACHE = "el-ciclo-inmovil-libro2-shell-v5";
 // Mismo nombre que AUDIO_CACHE en app.js ("Guardar sin conexión"). Si no
 // coinciden, el activate de abajo borra los capitulos guardados. No subirlo sin
 // motivo: vacia lo que cada oyente guardo.
@@ -13,6 +13,9 @@ const SHELL = [
   "./app.js",
   "./nieve.js",
   "./manifest.webmanifest",
+  "./assets/fuentes/cormorant-sc-400.woff2",
+  "./assets/fuentes/cormorant-sc-500.woff2",
+  "./assets/fuentes/cormorant-sc-600.woff2",
   "./assets/icons/favicon.ico",
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png",

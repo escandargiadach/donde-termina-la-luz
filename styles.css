@@ -1,3 +1,10 @@
+/* Cormorant SC: versalitas, del mismo aire que el grabado de los retratos.
+   Autoalojada y recortada al juego de caracteres de la pagina: 21 KB por peso
+   en vez de 746 KB, y sin pedirle nada a Google mientras alguien escucha. */
+@font-face{font-family:"Cormorant SC";src:url("assets/fuentes/cormorant-sc-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;size-adjust:112%}
+@font-face{font-family:"Cormorant SC";src:url("assets/fuentes/cormorant-sc-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap;size-adjust:112%}
+@font-face{font-family:"Cormorant SC";src:url("assets/fuentes/cormorant-sc-600.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap;size-adjust:112%}
+
 /* Libro II: un solo tema, noche helada. Misma estructura que el Libro I (hero,
    escuchar, reproductor fijo); fondo de noche polar con aurora fría, vidrio
    escarchado oscuro, acentos de hielo y nieve cayendo (nieve.js). */
@@ -19,7 +26,7 @@
   --shadow:0 24px 70px rgba(0,0,0,.45);
   --radius:20px;
   --player-height:104px;
-  --serif:Georgia,"Times New Roman",serif;
+  --serif:"Cormorant SC",Georgia,"Times New Roman",serif;
   --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   color-scheme:dark;
 }
