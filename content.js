@@ -39,6 +39,7 @@ window.BOOK_DATA = {
     { id: "elias", name: "Elías Sevrin", file: "assets/personajes/elias-sevrin.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
     { id: "ansel", name: "Ansel Nahl", file: "assets/personajes/ansel-nahl.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
     { id: "scar", name: "Scar", file: "assets/personajes/scar.webp", w: 900, h: 1350, unlock: 16, section: "cam17" },
+    { id: "maelis", name: "Maelis Varen", file: "assets/personajes/maelis-varen.webp", w: 900, h: 1350, unlock: 36, section: "cam17" },
     { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20, section: "fulgur" },
     { id: "nara", name: "Nara", file: "assets/personajes/nara.webp", w: 900, h: 1350, unlock: 24, section: "fulgur" },
     { id: "calev", name: "Calev", file: "assets/personajes/calev.webp", w: 900, h: 1350, unlock: 24, section: "fulgur" },
