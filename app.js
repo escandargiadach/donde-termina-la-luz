@@ -46,7 +46,8 @@
     durations: {},
     completed: {},
     unavailable: {},
-    speed: 1
+    speed: 1,
+    spoilers: true   // true = proteger; el oyente puede apagarlo
   };
 
   const saved = safeParse(localStorage.getItem(STORAGE_KEY));
@@ -74,6 +75,7 @@
   buildSpeedWheel();
   renderChapters();
   renderParts();
+  updateSpoilerToggle();
   renderCast();
   selectChapter(selectedIndex, false, true);
   bindEvents();
@@ -103,6 +105,7 @@
     elements.mobileClose.addEventListener("click", closeMenu);
     elements.mobileMenu.addEventListener("click", (event) => { if (event.target.tagName === "A") closeMenu(); });
     elements.offlineButton.addEventListener("click", saveCurrentAudioOffline);
+    document.getElementById("spoilerToggle")?.addEventListener("click", toggleSpoilers);
 
     elements.audio.addEventListener("loadedmetadata", onLoadedMetadata);
     elements.audio.addEventListener("timeupdate", onTimeUpdate);
@@ -396,7 +399,8 @@
   function renderCast() {
     const grid = document.getElementById("castGrid");
     if (!grid || !Array.isArray(data.characters)) return;
-    const html = data.characters.map(p => chapterReached(p.unlock)
+    const proteger = state.spoilers !== false;
+    const html = data.characters.map(p => (!proteger || chapterReached(p.unlock))
       ? `<figure class="cast-card">
           <img src="${p.file}" alt="Retrato de ${escapeHtml(p.name)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async">
           <figcaption><strong>${escapeHtml(p.name)}</strong><span>${escapeHtml(p.epithet)}</span></figcaption>
@@ -411,6 +415,28 @@
       grid.innerHTML = html;
       grid.dataset.firma = html;
     }
+  }
+
+  // Interruptor de anti-spoiler. Por defecto protege; quien ya leyo el libro (o
+  // no le importa) lo apaga y ve los tres retratos desde el principio.
+  function updateSpoilerToggle() {
+    const boton = document.getElementById("spoilerToggle");
+    const nota = document.getElementById("spoilerNote");
+    if (!boton) return;
+    const proteger = state.spoilers !== false;
+    boton.setAttribute("aria-checked", String(proteger));
+    if (nota) {
+      nota.textContent = proteger
+        ? "Se revelan al terminar el capítulo en que aparecen."
+        : "Se ven todos, incluidos los que aún no han aparecido.";
+    }
+  }
+
+  function toggleSpoilers() {
+    state.spoilers = state.spoilers === false;
+    saveState();
+    updateSpoilerToggle();
+    renderCast();
   }
 
   function renderParts() {
