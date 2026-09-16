@@ -406,7 +406,9 @@
     const grid = document.getElementById("castGrid");
     if (!grid || !Array.isArray(data.characters)) return;
     const proteger = state.spoilers !== false;
-    const html = data.characters.map(p => (!proteger || chapterReached(p.unlock))
+    const visible = x => !proteger || chapterReached(x.unlock);
+
+    const tarjetaPersona = p => visible(p)
       ? `<figure class="cast-card">
           <img src="${p.file}" alt="Retrato de ${escapeHtml(p.name)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async">
           <figcaption><strong>${escapeHtml(p.name)}</strong>${p.epithet ? `<span>${escapeHtml(p.epithet)}</span>` : ""}</figcaption>
@@ -414,10 +416,9 @@
       : `<figure class="cast-card locked">
           <span class="cast-locked-art" aria-hidden="true">✦</span>
           <figcaption><strong aria-label="Personaje aún no revelado">? ? ?</strong><span>Se revela más adelante</span></figcaption>
-        </figure>`).join("");
+        </figure>`;
     // retratos de grupo: una sola imagen ancha, que se abre en grande al tocarla
-    const grupos = Array.isArray(data.groups) ? data.groups : [];
-    const htmlGrupos = grupos.map(g => (!proteger || chapterReached(g.unlock))
+    const tarjetaGrupo = g => visible(g)
       ? `<figure class="cast-card cast-group">
           <img src="${g.file}" alt="${escapeHtml(g.name)}: ${escapeHtml(g.caption || "")}" width="${g.w}" height="${g.h}" loading="lazy" decoding="async">
           <figcaption><strong>${escapeHtml(g.name)}</strong>${g.caption ? `<span>${escapeHtml(g.caption)}</span>` : ""}</figcaption>
@@ -426,14 +427,44 @@
       : `<figure class="cast-card cast-group locked">
           <span class="cast-locked-art" aria-hidden="true">✦</span>
           <figcaption><strong aria-label="Grupo aún no revelado">? ? ?</strong><span>Se revela más adelante</span></figcaption>
-        </figure>`).join("");
+        </figure>`;
+
+    const grupos = Array.isArray(data.groups) ? data.groups : [];
+    const secciones = Array.isArray(data.castSections) ? data.castSections : [];
+    const colocadas = new Set();
+    let html = "";
+    let pendientes = "";   // secciones que aun no ha abierto nadie: van sin nombre
+
+    secciones.forEach(s => {
+      const personas = data.characters.filter(p => p.section === s.id);
+      const propios = grupos.filter(g => g.section === s.id);
+      if (!personas.length && !propios.length) return;
+      personas.forEach(p => colocadas.add(p));
+      propios.forEach(g => colocadas.add(g));
+      const piezas = personas.map(tarjetaPersona).join("") + propios.map(tarjetaGrupo).join("");
+      // El encabezado es parte del spoiler: "Dientes de Ceniza" delata al grupo
+      // aunque las seis tarjetas esten tapadas. Mientras no se revele ninguna,
+      // sus tarjetas caen al bloque anonimo del final.
+      if (personas.some(visible) || propios.some(visible)) {
+        html += `<h3 class="cast-head">${escapeHtml(s.name)}` +
+                (s.realm ? `<span>${escapeHtml(s.realm)}</span>` : "") + `</h3>` + piezas;
+      } else {
+        pendientes += piezas;
+      }
+    });
+
+    // lo que no declare seccion (o declare una que no existe) no se pierde
+    const sueltas = data.characters.filter(p => !colocadas.has(p)).map(tarjetaPersona).join("") +
+                    grupos.filter(g => !colocadas.has(g)).map(tarjetaGrupo).join("");
+    if (pendientes || sueltas) {
+      html += `<h3 class="cast-head cast-head-mute">Aún por revelar</h3>` + pendientes + sueltas;
+    }
 
     // updateOverallProgress corre en cada avance del audio: repintar solo si algo
     // cambio, para no pelear con la reproduccion en el telefono.
-    const todo = html + htmlGrupos;
-    if (grid.dataset.firma !== todo) {
-      grid.innerHTML = todo;
-      grid.dataset.firma = todo;
+    if (grid.dataset.firma !== html) {
+      grid.innerHTML = html;
+      grid.dataset.firma = html;
     }
   }
 

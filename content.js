@@ -14,30 +14,39 @@ window.BOOK_DATA = {
   // Retratos. "unlock" es el capitulo en el que el libro NOMBRA por primera vez
   // a ese personaje (verificado sobre el manuscrito V6): hasta llegar ahi la
   // tarjeta va bloqueada y ni el nombre ni la imagen entran en el HTML.
+  // Las secciones agrupan las tarjetas por la faccion del canon. Una seccion
+  // cuyos personajes siguen TODOS bloqueados no se pinta con su nombre: el
+  // encabezado ("Dientes de Ceniza") ya seria el spoiler que se quiere evitar.
+  castSections: [
+    { id: "cam17", name: "CAM-17" },
+    { id: "fulgur", name: "Fulgur" },
+    { id: "eternum", name: "Los Soryn", realm: "Eternum" },
+    { id: "assum", name: "Dientes de Ceniza", realm: "Assum" }
+  ],
   // Retratos de grupo: una sola imagen ancha que se abre en grande, con los
   // nombres al pie. Mismo bloqueo por capitulo que los retratos sueltos.
   groups: [
-    { id: "dientes", name: "Dientes de Ceniza", file: "assets/personajes/dientes-de-ceniza.webp", w: 2400, h: 1200, unlock: 30,
+    { id: "dientes", name: "Dientes de Ceniza", file: "assets/personajes/dientes-de-ceniza.webp", w: 2400, h: 1200, unlock: 30, section: "assum",
       caption: "Hal'Verkan · Dra'Vik · Rask · Bryn'Veth · Tor'Vaer · Yorn'Taz" }
   ],
   characters: [
-    { id: "gael", name: "Gael Altaren", file: "assets/personajes/gael-altaren.webp", w: 900, h: 1350, unlock: 1 },
-    { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1350, unlock: 1 },
-    { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1348, unlock: 1 },
-    { id: "kier", name: "Kier de Vries", file: "assets/personajes/kier-de-vries.webp", w: 900, h: 1351, unlock: 1 },
-    { id: "lina", name: "Lina Aurelian", file: "assets/personajes/lina-aurelian.webp", w: 900, h: 1348, unlock: 1 },
-    { id: "daren", name: "Daren de Vries", file: "assets/personajes/daren-de-vries.webp", w: 900, h: 1350, unlock: 1 },
-    { id: "elias", name: "Elías Sevrin", file: "assets/personajes/elias-sevrin.webp", w: 900, h: 1350, unlock: 2 },
-    { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20 },
-    { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1195, unlock: 23 },
-    { id: "rask", name: "Rask", file: "assets/personajes/rask.webp", w: 900, h: 1350, unlock: 25 },
-    { id: "hal", name: "Hal'Verkan", file: "assets/personajes/hal-verkan.webp", w: 900, h: 1350, unlock: 30 },
-    { id: "dravik", name: "Dra'Vik", file: "assets/personajes/dravik.webp", w: 900, h: 1350, unlock: 30 },
-    { id: "bryn", name: "Bryn'Veth", file: "assets/personajes/bryn-veth.webp", w: 900, h: 1350, unlock: 30 },
-    { id: "tor", name: "Tor'Vaer", file: "assets/personajes/tor-vaer.webp", w: 900, h: 1350, unlock: 30 },
-    { id: "yorn", name: "Yorn'Taz", file: "assets/personajes/yorn-taz.webp", w: 900, h: 1350, unlock: 30 },
-    { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1125, unlock: 31 },
-    { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1174, unlock: 31 }
+    { id: "gael", name: "Gael Altaren", file: "assets/personajes/gael-altaren.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
+    { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
+    { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1348, unlock: 1, section: "cam17" },
+    { id: "kier", name: "Kier de Vries", file: "assets/personajes/kier-de-vries.webp", w: 900, h: 1351, unlock: 1, section: "cam17" },
+    { id: "lina", name: "Lina Aurelian", file: "assets/personajes/lina-aurelian.webp", w: 900, h: 1348, unlock: 1, section: "cam17" },
+    { id: "daren", name: "Daren de Vries", file: "assets/personajes/daren-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
+    { id: "elias", name: "Elías Sevrin", file: "assets/personajes/elias-sevrin.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
+    { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20, section: "fulgur" },
+    { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1195, unlock: 23, section: "eternum" },
+    { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1125, unlock: 31, section: "eternum" },
+    { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1174, unlock: 31, section: "eternum" },
+    { id: "rask", name: "Rask", file: "assets/personajes/rask.webp", w: 900, h: 1350, unlock: 25, section: "assum" },
+    { id: "hal", name: "Hal'Verkan", file: "assets/personajes/hal-verkan.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
+    { id: "dravik", name: "Dra'Vik", file: "assets/personajes/dravik.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
+    { id: "bryn", name: "Bryn'Veth", file: "assets/personajes/bryn-veth.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
+    { id: "tor", name: "Tor'Vaer", file: "assets/personajes/tor-vaer.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
+    { id: "yorn", name: "Yorn'Taz", file: "assets/personajes/yorn-taz.webp", w: 900, h: 1350, unlock: 30, section: "assum" }
   ],
   chapters: [
     { number: 1, title: "El héroe de CAM-17", part: "Parte I", file: "01-el-heroe-de-cam-17.mp3", seconds: 2121 },

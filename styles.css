@@ -188,6 +188,14 @@ main{width:min(1460px,100%);margin:0 auto}
 .cast-card figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:6px;padding:64px 22px 22px;background:linear-gradient(to top,rgba(4,10,16,.94),rgba(4,10,16,.6) 52%,transparent)}
 .cast-card strong{font:500 26px/1.1 var(--serif);color:var(--ink)}
 .cast-card figcaption span{color:var(--ice);font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
+/* Encabezado de seccion. Ocupa la fila entera para que las tarjetas de la
+   seccion siguiente arranquen siempre en la primera columna. */
+.cast-head{grid-column:1/-1;display:flex;align-items:baseline;gap:14px;margin:30px 0 4px;font:500 24px/1.1 var(--serif);color:var(--ink)}
+.cast-head:first-child{margin-top:0}
+.cast-head span{flex:none;color:var(--ice);font:900 10px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.cast-head::after{content:"";order:9;flex:1;height:1px;background:linear-gradient(90deg,rgba(143,209,231,.3),transparent)}
+.cast-head-mute{color:var(--muted)}
+.cast-head-mute::after{background:linear-gradient(90deg,rgba(137,162,178,.22),transparent)}
 
 /* Interruptor de anti-spoiler. Encendido por defecto: protege salvo que el
    oyente diga lo contrario. */
