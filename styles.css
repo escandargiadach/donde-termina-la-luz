@@ -184,6 +184,17 @@ main{width:min(1460px,100%);margin:0 auto}
 .part-card .progress-track{align-self:stretch;margin:10px 0 4px}
 
 /* ---- saga ---- */
+/* Retratos de personajes. Sin backdrop-filter a proposito: en el movil compite
+   con la reproduccion del audio (ver nieve.js y el bloque de 900px). */
+.cast-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.cast-card{position:relative;margin:0;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:rgba(12,24,36,.6);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.cast-card:hover{transform:translateY(-4px);border-color:rgba(143,209,231,.35);box-shadow:0 28px 70px rgba(0,0,0,.5),0 0 40px rgba(124,200,230,.08)}
+.cast-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--ice),transparent);box-shadow:0 0 14px var(--ice);z-index:2}
+.cast-card img{display:block;width:100%;height:auto;aspect-ratio:3/4;max-width:100%;object-fit:cover;object-position:50% 14%}
+.cast-card figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:6px;padding:64px 22px 22px;background:linear-gradient(to top,rgba(4,10,16,.94),rgba(4,10,16,.6) 52%,transparent)}
+.cast-card strong{font:500 26px/1.1 var(--serif);color:var(--ink)}
+.cast-card figcaption span{color:var(--ice);font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
+
 .saga-section{padding-top:30px;border-top:0}
 .saga-card{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:clamp(32px,5vw,64px);border-radius:28px;background:linear-gradient(135deg,rgba(14,30,44,.78),rgba(26,60,82,.5))}
 .saga-card h2{margin:0;font:500 clamp(38px,5vw,64px)/1.05 var(--serif);letter-spacing:-.04em;color:var(--ink)}
@@ -299,6 +310,7 @@ input[type="range"]{width:100%;height:4px;accent-color:var(--ice);cursor:pointer
   .chapter-copy strong{font-size:17px}
   .chapter-done-toggle{margin-right:12px}
   .part-grid{grid-template-columns:1fr}
+  .cast-grid{grid-template-columns:1fr;gap:14px}
   .part-card{min-height:200px}
   .saga-card{padding:28px 22px}
   .saga-card .primary-button{width:100%}
