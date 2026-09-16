@@ -184,7 +184,7 @@ main{width:min(1460px,100%);margin:0 auto}
 .cast-card{position:relative;margin:0;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:rgba(12,24,36,.6);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
 .cast-card:hover{transform:translateY(-4px);border-color:rgba(143,209,231,.35);box-shadow:0 28px 70px rgba(0,0,0,.5),0 0 40px rgba(124,200,230,.08)}
 .cast-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--ice),transparent);box-shadow:0 0 14px var(--ice);z-index:2}
-.cast-card img{display:block;width:100%;height:auto;aspect-ratio:3/4;max-width:100%;object-fit:cover;object-position:50% 14%}
+.cast-card img{display:block;width:100%;height:auto;aspect-ratio:2/3;max-width:100%;object-fit:cover;object-position:50% 30%}
 .cast-card figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:6px;padding:64px 22px 22px;background:linear-gradient(to top,rgba(4,10,16,.94),rgba(4,10,16,.6) 52%,transparent)}
 .cast-card strong{font:500 26px/1.1 var(--serif);color:var(--ink)}
 .cast-card figcaption span{color:var(--ice);font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
@@ -203,7 +203,7 @@ main{width:min(1460px,100%);margin:0 auto}
 @media(max-width:620px){.spoiler-toggle{width:100%}}
 
 /* Tarjeta bloqueada: ni cara ni nombre hasta que el libro lo presente. */
-.cast-card.locked{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/4;background:linear-gradient(160deg,rgba(18,38,54,.85),rgba(8,16,24,.92))}
+.cast-card.locked{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:2/3;background:linear-gradient(160deg,rgba(18,38,54,.85),rgba(8,16,24,.92))}
 .cast-card.locked:hover{transform:none;box-shadow:none;border-color:var(--line)}
 .cast-locked-art{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(38px,5vw,60px);color:rgba(143,209,231,.22)}
 .cast-card.locked figcaption{position:static;background:none;padding:0 22px 22px}
