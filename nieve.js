@@ -29,8 +29,10 @@
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    // densidad por area, con tope: en telefono caen ~20 copos, en escritorio 90
-    const target = Math.round(Math.min(90, (w * h) / 16000));
+    // densidad por area, con tope. En telefono la mitad: el canvas compite con la
+    // reproduccion del audio y el sonido se entrecorta (reportado el 15-sep).
+    const movil = w <= 900;
+    const target = Math.round(Math.min(movil ? 30 : 90, (w * h) / (movil ? 26000 : 16000)));
     while (flakes.length < target) flakes.push(flake(true));
     flakes.length = target;
   }
@@ -53,10 +55,23 @@
     raf = requestAnimationFrame(frame);
   }
 
+  function parar() { cancelAnimationFrame(raf); raf = 0; }
+  function seguir() { if (!raf && !document.hidden && !suena()) { last = 0; raf = requestAnimationFrame(frame); } }
+  // en telefono la nieve se detiene mientras suena el audio: primero se oye bien
+  function suena() {
+    const a = document.getElementById("audio");
+    return window.innerWidth <= 900 && a && !a.paused;
+  }
+
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) { cancelAnimationFrame(raf); raf = 0; }
-    else if (!raf) { last = 0; raf = requestAnimationFrame(frame); }
+    if (document.hidden) parar(); else seguir();
   });
+  const audio = document.getElementById("audio");
+  if (audio) {
+    audio.addEventListener("play", () => { if (suena()) { parar(); ctx.clearRect(0, 0, w, h); } });
+    audio.addEventListener("pause", seguir);
+    audio.addEventListener("ended", seguir);
+  }
   window.addEventListener("resize", size, { passive: true });
   size();
   raf = requestAnimationFrame(frame);

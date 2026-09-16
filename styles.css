@@ -245,6 +245,12 @@ input[type="range"]{width:100%;height:4px;accent-color:var(--ice);cursor:pointer
 }
 @media(max-width:900px){
   :root{--player-height:150px}
+  /* el desenfoque de fondo es caro en teléfono y compite con la reproducción:
+     se cambia por paneles opacos (15-sep) */
+  .topbar,.player-shell,.overall-progress-card,.now-playing-card,.chapter-panel,.part-card,.saga-card,.menu-button{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .overall-progress-card,.now-playing-card,.chapter-panel,.part-card,.saga-card{background:rgba(12,24,36,.92)}
+  .topbar{background:rgba(4,10,17,.94)}
+  .player-shell{background:rgba(7,15,23,.96)}
   .desktop-nav{display:none}
   .menu-button{display:grid}
   .hero{grid-template-columns:1fr;min-height:auto;padding-top:80px}
