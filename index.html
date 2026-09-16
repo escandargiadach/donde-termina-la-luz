@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#050b12">
+  <meta name="description" content="Audiolibro completo de Donde termina la luz, Libro II de El ciclo inmóvil.">
+  <title>Donde termina la luz — El ciclo inmóvil, Libro II</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="frost-sky" aria-hidden="true"></div>
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M3.34 7l17.32 10M3.34 17 20.66 7"/><path d="M9.5 3.5 12 5.5l2.5-2M9.5 20.5l2.5-2 2.5 2M3.4 9.9l3-1.15-.5-3.15M20.6 14.1l-3 1.15.5 3.15M20.6 9.9l-3-1.15.5-3.15M3.4 14.1l3 1.15-.5 3.15"/></svg>
+      </span>
+      <span><strong>El ciclo inmóvil</strong><small>Libro II · Audiolibro</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="#escuchar">Escuchar</a>
+      <a href="#partes">Partes</a>
+      <a href="#saga">Libro I</a>
+    </nav>
+    <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú">☰</button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-close" id="mobileClose" type="button" aria-label="Cerrar menú">×</button>
+    <a href="#escuchar">Escuchar</a>
+    <a href="#partes">Partes</a>
+    <a href="#saga">Libro I</a>
+  </div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">El ciclo inmóvil · Libro II</p>
+        <h1>Donde termina <span>la luz</span></h1>
+        <p class="hero-description">El segundo libro de la saga, narrado completo. Tu progreso se guarda en este dispositivo para que continúes donde lo dejaste.</p>
+        <div class="hero-actions">
+          <button class="primary-button" id="resumeButton" type="button">▶ Comenzar a escuchar</button>
+          <a class="secondary-button" href="#partes">Ver las partes</a>
+        </div>
+        <div class="hero-meta">
+          <span><strong id="chapterCount">41</strong>&nbsp;capítulos</span>
+          <span><strong id="bookHours">20 h 35 min</strong>&nbsp;de audio</span>
+          <span>Progreso guardado</span>
+        </div>
+      </div>
+
+      <div class="cover-wrap">
+        <div class="cover-glow" aria-hidden="true"></div>
+        <div class="ice-cover" role="img" aria-label="Portada: Donde termina la luz, Libro II de El ciclo inmóvil, de Escandar Giadach">
+          <svg class="ice-facets" viewBox="0 0 400 570" preserveAspectRatio="none" aria-hidden="true">
+            <polygon class="f1" points="0,0 400,0 400,110 230,250 0,160"/>
+            <polygon class="f2" points="0,160 230,250 150,570 0,570"/>
+            <polygon class="f3" points="230,250 400,110 400,400 300,570 150,570"/>
+            <polygon class="f4" points="230,250 300,570 150,570"/>
+          </svg>
+          <span class="ice-cover-saga">El ciclo inmóvil</span>
+          <span class="ice-cover-title">Donde termina la luz</span>
+          <span class="ice-cover-foot"><b>Libro II</b><small>Escandar Giadach</small></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section listening-section" id="escuchar">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Audiolibro</p>
+          <h2>Libro II</h2>
+        </div>
+        <div class="overall-progress-card">
+          <span>Progreso total</span>
+          <strong id="overallPercent">0%</strong>
+          <div class="progress-track"><span id="overallProgress"></span></div>
+          <div class="book-time">
+            <span><b id="bookRemaining">--</b> por escuchar</span>
+            <span id="bookTotal">de --</span>
+          </div>
+          <p id="bookSpeedNote" hidden></p>
+        </div>
+      </div>
+
+      <div class="listening-layout">
+        <aside class="now-playing-card">
+          <div class="now-art" aria-hidden="true">
+            <span class="now-art-label" id="nowArtLabel">Capítulo</span>
+            <span class="now-art-number" id="nowNumber">01</span>
+          </div>
+          <p class="mini-label">Reproduciendo</p>
+          <h3 id="nowTitle">Selecciona un capítulo</h3>
+          <p id="nowPart">Parte I</p>
+          <div class="chapter-progress-summary">
+            <span id="elapsedSummary">00:00</span>
+            <span id="durationSummary">--:--</span>
+          </div>
+          <div class="progress-track large"><span id="cardProgress"></span></div>
+          <button class="outline-button" id="offlineButton" type="button">Guardar capítulo sin conexión</button>
+          <p class="small-note" id="offlineNote">Guarda el audio en este dispositivo para escucharlo sin internet.</p>
+        </aside>
+
+        <div class="chapter-panel">
+          <div class="chapter-panel-head">
+            <div>
+              <span>Lista de reproducción</span>
+              <strong>Libro completo</strong>
+            </div>
+          </div>
+          <div class="chapter-list" id="chapterList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section parts-section" id="partes">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Estructura</p>
+          <h2>Cuatro partes</h2>
+          <p>Toca una parte para abrir sus capítulos en la lista de reproducción.</p>
+        </div>
+      </div>
+      <div class="part-grid" id="partGrid"></div>
+    </section>
+
+    <section class="section saga-section" id="saga">
+      <div class="saga-card">
+        <div>
+          <p class="eyebrow">La saga</p>
+          <h2>¿Empiezas por aquí?</h2>
+          <p>Donde termina la luz continúa la historia de Los hijos del muro. El Libro I sigue disponible completo, con su archivo visual y el mapa del mundo.</p>
+        </div>
+        <a class="primary-button" href="https://el-ciclo-inmovil.netlify.app/" rel="noopener">Escuchar el Libro I</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Donde termina la luz</strong>
+      <span>El ciclo inmóvil · Libro II</span>
+      <span>© <span id="year"></span> Escandar Giadach</span>
+    </div>
+  </footer>
+
+  <div class="player-shell" id="playerShell" aria-label="Reproductor de audiolibro">
+    <audio id="audio" preload="metadata"></audio>
+    <div class="player-info">
+      <div class="ice-tile" aria-hidden="true"><span id="playerNumber">01</span></div>
+      <div class="player-text"><span id="playerChapter">Capítulo</span><strong id="playerTitle">Selecciona un capítulo</strong></div>
+    </div>
+    <div class="player-main">
+      <div class="player-controls">
+        <button type="button" id="previousButton" aria-label="Capítulo anterior"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6z"/><path d="M19.5 5.6v12.8L9.8 12z"/></svg></button>
+        <button type="button" id="backButton" aria-label="Retroceder 10 segundos"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 3.8 5 6.2l2.4 2.4"/><path d="M5 6.2h7.3a6.4 6.4 0 1 1-6.4 6.4"/></g><text x="12.2" y="15.4" text-anchor="middle" font-size="7" font-weight="800" fill="currentColor" font-family="inherit">10</text></svg></button>
+        <button class="play-button" type="button" id="playButton" aria-label="Reproducir"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 5.2v13.6L19.5 12z"/></svg></button>
+        <button type="button" id="forwardButton" aria-label="Avanzar 10 segundos"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16.6 3.8 19 6.2l-2.4 2.4"/><path d="M19 6.2h-7.3a6.4 6.4 0 1 0 6.4 6.4"/></g><text x="11.8" y="15.4" text-anchor="middle" font-size="7" font-weight="800" fill="currentColor" font-family="inherit">10</text></svg></button>
+        <button type="button" id="nextButton" aria-label="Capítulo siguiente"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.8 5h2.2v14h-2.2z"/><path d="M4.5 5.6v12.8L14.2 12z"/></svg></button>
+      </div>
+      <div class="timeline-row">
+        <span id="currentTime">00:00</span>
+        <input id="timeline" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del capítulo">
+        <span id="duration">--:--</span>
+      </div>
+    </div>
+    <div class="player-options">
+      <div class="speed-picker">
+        <button type="button" class="speed-toggle" id="speedToggle"
+                aria-haspopup="true" aria-expanded="false" aria-controls="speedPop">
+          <span class="speed-toggle-label">Velocidad</span>
+          <b id="speedToggleValue">1×</b>
+        </button>
+        <div class="speed-pop" id="speedPop" hidden>
+          <div class="speed-wheel" id="speedWheel" role="slider" tabindex="0"
+               aria-label="Velocidad de reproducción" aria-valuemin="0.75"
+               aria-valuemax="2" aria-valuenow="1" aria-valuetext="1×">
+            <div class="speed-wheel-band" aria-hidden="true"></div>
+            <div class="speed-wheel-track" id="speedWheelTrack"></div>
+          </div>
+        </div>
+      </div>
+      <button type="button" id="muteButton" aria-label="Silenciar"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9.3v5.4h3.3L12 18.9V5.1L7.3 9.3z"/><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M14.8 9.3a3.9 3.9 0 0 1 0 5.4"/><path d="M17.3 6.9a7.3 7.3 0 0 1 0 10.2"/></g></svg></button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="content.js"></script>
+  <script src="nieve.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

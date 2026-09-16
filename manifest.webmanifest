@@ -1,0 +1,14 @@
+{
+  "name": "Donde termina la luz — Audiolibro",
+  "short_name": "Libro II",
+  "description": "Audiolibro completo de Donde termina la luz, Libro II de El ciclo inmóvil.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050b12",
+  "theme_color": "#050b12",
+  "lang": "es",
+  "icons": [
+    { "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
