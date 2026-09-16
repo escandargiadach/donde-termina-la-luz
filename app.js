@@ -818,10 +818,30 @@
     });
   }
 
+  // El service worker guarda la pagina para que funcione sin conexion, pero eso
+  // hacia que en el telefono se siguiera viendo la version vieja hasta cerrar la
+  // pestaña a mano. Ahora, cuando hay una version nueva, la pagina se recarga
+  // sola: una vez, y solo si ya habia un worker mandando (si no, la primera
+  // visita se recargaria sin motivo, porque activate hace clients.claim).
   function registerServiceWorker() {
-    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-      window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
-    }
+    if (!("serviceWorker" in navigator) || !location.protocol.startsWith("http")) return;
+    const habiaControlador = !!navigator.serviceWorker.controller;
+    let recargando = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (!habiaControlador || recargando) return;
+      recargando = true;
+      location.reload();
+    });
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").then(reg => {
+        reg.update().catch(() => {});
+        // al volver a la app desde segundo plano: es justo cuando el movil se
+        // quedaba con lo viejo
+        document.addEventListener("visibilitychange", () => {
+          if (!document.hidden) reg.update().catch(() => {});
+        });
+      }).catch(() => {});
+    });
   }
 
   function saveState() {
