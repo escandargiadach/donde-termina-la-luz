@@ -388,7 +388,9 @@
   function chapterReached(number) {
     const index = data.chapters.findIndex(c => c.number === number);
     if (index < 0) return true;   // si ese capitulo no existe, no se oculta nada
-    return !!state.completed[index] || Number(state.times[index] || 0) > 0;
+    // al TERMINAR el capitulo, no al empezarlo (Escandar, 16-sep). `completed` se
+    // pone solo al pasar el 90% del audio, y tambien a mano con el tilde de la lista.
+    return !!state.completed[index];
   }
 
   function renderCast() {
