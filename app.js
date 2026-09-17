@@ -78,6 +78,7 @@
   updateSpoilerToggle();
   renderCast();
   renderScenes();
+  vigilarEscenas();
   selectChapter(selectedIndex, false, true);
   bindEvents();
   updateOverallProgress();
@@ -119,7 +120,10 @@
     // el trailer y el audiolibro no suenan a la vez: el que arranca para al otro
     const trailer = document.getElementById("trailerVideo");
     if (trailer) {
-      trailer.addEventListener("play", () => { if (!elements.audio.paused) elements.audio.pause(); });
+      trailer.addEventListener("play", () => {
+        if (!elements.audio.paused) elements.audio.pause();
+        document.querySelectorAll("video[data-bucle]").forEach(v => v.pause());
+      });
       elements.audio.addEventListener("play", () => { if (!trailer.paused) trailer.pause(); });
     }
     elements.audio.addEventListener("play", ajustarEscenas);
@@ -491,7 +495,7 @@
     // "Escenas" con tarjetas tapadas no aporta nada y ocupa pantalla
     seccion.hidden = !visibles.length;
     const html = visibles.map(e => `<figure class="scene-card">
-        <video src="${e.file}" poster="${e.poster}" width="${e.w}" height="${e.h}"
+        <video data-bucle src="${e.file}" poster="${e.poster}" width="${e.w}" height="${e.h}"
                muted loop playsinline preload="none" disablepictureinpicture></video>
         <figcaption><strong>${escapeHtml(e.name)}</strong>${e.caption ? `<span>${escapeHtml(e.caption)}</span>` : ""}</figcaption>
       </figure>`).join("");
@@ -509,10 +513,14 @@
     const audio = document.getElementById("audio");
     const sonando = audio && !audio.paused;
     const parar = quieto || document.hidden || sonando;
-    document.querySelectorAll(".scene-card video").forEach(v => {
+    document.querySelectorAll("video[data-bucle]").forEach(v => {
       // Chrome pausa por su cuenta el video mudo que no se ve ("video-only
       // background media was paused to save power"), asi que ni se intenta.
-      if (parar || v.dataset.fuera === "1") { v.pause(); return; }
+      const debeParar = parar || v.dataset.fuera === "1";
+      // no repetir la orden que ya esta cumplida: un play() seguido de pause()
+      // antes de que resuelva la promesa suelta un AbortError en consola
+      if (debeParar) { if (!v.paused) v.pause(); return; }
+      if (!v.paused) return;
       if (v.preload === "none") v.preload = "auto";
       const p = v.play();
       if (p && p.catch) p.catch(() => {});
@@ -527,7 +535,7 @@
       entradas.forEach(e => { e.target.dataset.fuera = e.isIntersecting ? "0" : "1"; });
       ajustarEscenas();
     }, { rootMargin: "120px" });
-    document.querySelectorAll(".scene-card video").forEach(v => io.observe(v));
+    document.querySelectorAll("video[data-bucle]").forEach(v => io.observe(v));
   }
   // Abre una imagen a pantalla completa. Se cierra con Esc (lo hace <dialog>),
   // tocando fuera o en el aspa.
