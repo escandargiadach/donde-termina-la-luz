@@ -48,6 +48,7 @@ window.BOOK_DATA = {
     { id: "nila", name: "Nila Sorn", file: "assets/personajes/nila-sorn.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "iris", name: "Iris Veyra", file: "assets/personajes/iris-veyra.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "scar", name: "Scar", file: "assets/personajes/scar.webp", w: 900, h: 1350, unlock: 16, section: "principales" },
+    { id: "arlette", name: "Arlette Voss", file: "assets/personajes/arlette-voss.webp", w: 900, h: 1350, unlock: 26, section: "cam17" },
     { id: "maelis", name: "Maelis Varen", file: "assets/personajes/maelis-varen.webp", w: 900, h: 1350, unlock: 36, section: "cam17" },
     { id: "lucan", name: "Lucan Aurelian", file: "assets/personajes/lucan-aurelian.webp", w: 900, h: 1350, unlock: 1, section: "aurelian" },
     { id: "rivan", name: "Rivan Aurelian", file: "assets/personajes/rivan-aurelian.webp", w: 900, h: 1350, unlock: 14, section: "aurelian" },
