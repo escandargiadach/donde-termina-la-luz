@@ -29,8 +29,7 @@ window.BOOK_DATA = {
     { id: "corven", name: "Corven", realm: "Fulgur" },
     { id: "fulgur", name: "Fulgur" },
     { id: "assum", name: "Assum" },
-    { id: "eternum", name: "Los Soryn", realm: "Eternum" },
-    { id: "rhazir", name: "Rhazir" }
+    { id: "eternum", name: "Los Soryn", realm: "Eternum" }
   ],
   // Retratos de grupo: una sola imagen ancha que se abre en grande, con los
   // nombres al pie. Mismo bloqueo por capitulo que los retratos sueltos.
