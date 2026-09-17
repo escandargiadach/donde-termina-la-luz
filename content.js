@@ -28,13 +28,16 @@ window.BOOK_DATA = {
     { id: "veyron", name: "Veyron", realm: "Fulgur" },
     { id: "corven", name: "Corven", realm: "Fulgur" },
     { id: "fulgur", name: "Fulgur" },
+    { id: "ardent", name: "Ardent", realm: "Assum" },
+    { id: "sareth", name: "Sareth", realm: "Assum" },
+    { id: "dientes", name: "Dientes de Ceniza", realm: "Assum" },
     { id: "assum", name: "Assum" },
     { id: "eternum", name: "Los Soryn", realm: "Eternum" }
   ],
   // Retratos de grupo: una sola imagen ancha que se abre en grande, con los
   // nombres al pie. Mismo bloqueo por capitulo que los retratos sueltos.
   groups: [
-    { id: "dientes", name: "Dientes de Ceniza", file: "assets/personajes/dientes-de-ceniza.webp", w: 2400, h: 1200, unlock: 30, section: "assum",
+    { id: "dientes", name: "Dientes de Ceniza", file: "assets/personajes/dientes-de-ceniza.webp", w: 2400, h: 1200, unlock: 30, section: "dientes",
       caption: "Hal'Verkan · Dra'Vik · Rask · Bryn'Veth · Tor'Vaer · Yorn'Taz" }
   ],
   characters: [
@@ -65,20 +68,22 @@ window.BOOK_DATA = {
     { id: "aedra", name: "Aedra Draevin", file: "assets/personajes/aedra-draevin.webp", w: 900, h: 1350, unlock: 20, section: "draevin" },
     { id: "selq", name: "Selq", file: "assets/personajes/selq.webp", w: 900, h: 1350, unlock: 20, section: "draevin" },
     { id: "khara", name: "Khara", file: "assets/personajes/khara.webp", w: 900, h: 1350, unlock: 20, section: "draevin" },
+    { id: "solvar", name: "Solvar Helion", file: "assets/personajes/solvar-helion.webp", w: 900, h: 1350, unlock: 13, section: "helion" },
+    { id: "varya", name: "Varya Helion", file: "assets/personajes/varya-helion.webp", w: 900, h: 1350, unlock: 29, section: "helion" },
     { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20, section: "draevin" },
     { id: "nara", name: "Nara", file: "assets/personajes/nara.webp", w: 900, h: 1350, unlock: 24, section: "aurelian" },
     { id: "calev", name: "Calev", file: "assets/personajes/calev.webp", w: 900, h: 1350, unlock: 24, section: "aurelian" },
     { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1350, unlock: 23, section: "eternum" },
     { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
     { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
-    { id: "yvara", name: "Yvara", file: "assets/personajes/yvara.webp", w: 900, h: 1350, unlock: 12, section: "assum" },
-    { id: "kaedrahn", name: "Kaedrahn", file: "assets/personajes/kaedrahn.webp", w: 900, h: 1350, unlock: 12, section: "assum" },
-    { id: "rask", name: "Rask", file: "assets/personajes/rask.webp", w: 900, h: 1350, unlock: 25, section: "assum" },
-    { id: "hal", name: "Hal'Verkan", file: "assets/personajes/hal-verkan.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
-    { id: "dravik", name: "Dra'Vik", file: "assets/personajes/dravik.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
-    { id: "bryn", name: "Bryn'Veth", file: "assets/personajes/bryn-veth.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
-    { id: "tor", name: "Tor'Vaer", file: "assets/personajes/tor-vaer.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
-    { id: "yorn", name: "Yorn'Taz", file: "assets/personajes/yorn-taz.webp", w: 900, h: 1350, unlock: 30, section: "assum" }
+    { id: "yvara", name: "Yvara", file: "assets/personajes/yvara.webp", w: 900, h: 1350, unlock: 12, section: "sareth" },
+    { id: "kaedrahn", name: "Kaedrahn", file: "assets/personajes/kaedrahn.webp", w: 900, h: 1350, unlock: 12, section: "ardent" },
+    { id: "rask", name: "Rask", file: "assets/personajes/rask.webp", w: 900, h: 1350, unlock: 25, section: "dientes" },
+    { id: "hal", name: "Hal'Verkan", file: "assets/personajes/hal-verkan.webp", w: 900, h: 1350, unlock: 30, section: "dientes" },
+    { id: "dravik", name: "Dra'Vik", file: "assets/personajes/dravik.webp", w: 900, h: 1350, unlock: 30, section: "dientes" },
+    { id: "bryn", name: "Bryn'Veth", file: "assets/personajes/bryn-veth.webp", w: 900, h: 1350, unlock: 30, section: "dientes" },
+    { id: "tor", name: "Tor'Vaer", file: "assets/personajes/tor-vaer.webp", w: 900, h: 1350, unlock: 30, section: "dientes" },
+    { id: "yorn", name: "Yorn'Taz", file: "assets/personajes/yorn-taz.webp", w: 900, h: 1350, unlock: 30, section: "dientes" }
   ],
   chapters: [
     { number: 1, title: "El héroe de CAM-17", part: "Parte I", file: "01-el-heroe-de-cam-17.mp3", seconds: 2121 },
