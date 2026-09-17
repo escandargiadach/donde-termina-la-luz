@@ -26,9 +26,8 @@
     </a>
     <nav class="desktop-nav" aria-label="Navegación principal">
       <a href="#escuchar">Escuchar</a>
-      <a href="#partes">Partes</a>
-      <a href="#personajes">Personajes</a>
       <a href="#escenas">Escenas</a>
+      <a href="#personajes">Personajes</a>
       <a href="#saga">Libro I</a>
     </nav>
     <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú">☰</button>
@@ -37,9 +36,8 @@
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <button class="mobile-close" id="mobileClose" type="button" aria-label="Cerrar menú">×</button>
     <a href="#escuchar">Escuchar</a>
-    <a href="#partes">Partes</a>
-    <a href="#personajes">Personajes</a>
     <a href="#escenas">Escenas</a>
+    <a href="#personajes">Personajes</a>
     <a href="#saga">Libro I</a>
   </div>
 
@@ -51,7 +49,7 @@
         <p class="hero-description">El segundo libro de la saga, narrado completo. Tu progreso se guarda en este dispositivo para que continúes donde lo dejaste.</p>
         <div class="hero-actions">
           <button class="primary-button" id="resumeButton" type="button">▶ Comenzar a escuchar</button>
-          <a class="secondary-button" href="#partes">Ver las partes</a>
+          <a class="secondary-button" href="#escuchar">Ver los capítulos</a>
         </div>
         <div class="hero-meta">
           <span><strong id="chapterCount">41</strong>&nbsp;capítulos</span>
@@ -116,15 +114,15 @@
       </div>
     </section>
 
-    <section class="section parts-section" id="partes">
+    <section class="section scene-section" id="escenas" hidden>
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Estructura</p>
-          <h2>Cuatro partes</h2>
-          <p>Toca una parte para abrir sus capítulos en la lista de reproducción.</p>
+          <p class="eyebrow">Libro II</p>
+          <h2>Escenas</h2>
+          <p>Se repiten solas y sin sonido. Se detienen mientras escuchas.</p>
         </div>
       </div>
-      <div class="part-grid" id="partGrid"></div>
+      <div class="scene-grid" id="sceneGrid"></div>
     </section>
 
     <section class="section cast-section" id="personajes">
@@ -143,17 +141,6 @@
         </button>
       </div>
       <div class="cast-grid" id="castGrid"></div>
-    </section>
-
-    <section class="section scene-section" id="escenas" hidden>
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Libro II</p>
-          <h2>Escenas</h2>
-          <p>Se repiten solas y sin sonido. Se detienen mientras escuchas.</p>
-        </div>
-      </div>
-      <div class="scene-grid" id="sceneGrid"></div>
     </section>
 
     <section class="section saga-section" id="saga">
