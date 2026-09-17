@@ -21,7 +21,7 @@ window.BOOK_DATA = {
     { id: "cam17", name: "CAM-17" },
     { id: "fulgur", name: "Fulgur" },
     { id: "eternum", name: "Los Soryn", realm: "Eternum" },
-    { id: "assum", name: "Dientes de Ceniza", realm: "Assum" }
+    { id: "assum", name: "Assum" }
   ],
   // Retratos de grupo: una sola imagen ancha que se abre en grande, con los
   // nombres al pie. Mismo bloqueo por capitulo que los retratos sueltos.
@@ -52,6 +52,7 @@ window.BOOK_DATA = {
     { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1350, unlock: 23, section: "eternum" },
     { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
     { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
+    { id: "kaedrahn", name: "Kaedrahn", file: "assets/personajes/kaedrahn.webp", w: 900, h: 1350, unlock: 12, section: "assum" },
     { id: "rask", name: "Rask", file: "assets/personajes/rask.webp", w: 900, h: 1350, unlock: 25, section: "assum" },
     { id: "hal", name: "Hal'Verkan", file: "assets/personajes/hal-verkan.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
     { id: "dravik", name: "Dra'Vik", file: "assets/personajes/dravik.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
