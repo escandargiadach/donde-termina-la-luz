@@ -32,7 +32,7 @@ window.BOOK_DATA = {
   characters: [
     { id: "gael", name: "Gael Altaren", file: "assets/personajes/gael-altaren.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
     { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
-    { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1348, unlock: 1, section: "cam17" },
+    { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
     { id: "kier", name: "Kier de Vries", file: "assets/personajes/kier-de-vries.webp", w: 900, h: 1351, unlock: 1, section: "cam17" },
     { id: "lina", name: "Lina Aurelian", file: "assets/personajes/lina-aurelian.webp", w: 900, h: 1348, unlock: 1, section: "cam17" },
     { id: "daren", name: "Daren de Vries", file: "assets/personajes/daren-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
@@ -52,6 +52,7 @@ window.BOOK_DATA = {
     { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1350, unlock: 23, section: "eternum" },
     { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
     { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
+    { id: "yvara", name: "Yvara", file: "assets/personajes/yvara.webp", w: 900, h: 1350, unlock: 12, section: "assum" },
     { id: "kaedrahn", name: "Kaedrahn", file: "assets/personajes/kaedrahn.webp", w: 900, h: 1350, unlock: 12, section: "assum" },
     { id: "rask", name: "Rask", file: "assets/personajes/rask.webp", w: 900, h: 1350, unlock: 25, section: "assum" },
     { id: "hal", name: "Hal'Verkan", file: "assets/personajes/hal-verkan.webp", w: 900, h: 1350, unlock: 30, section: "assum" },
