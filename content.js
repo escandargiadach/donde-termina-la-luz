@@ -55,6 +55,7 @@ window.BOOK_DATA = {
     { id: "lucan", name: "Lucan Aurelian", file: "assets/personajes/lucan-aurelian.webp", w: 900, h: 1350, unlock: 1, section: "aurelian" },
     { id: "adrian", name: "Adrian Aurelian", file: "assets/personajes/adrian-aurelian.webp", w: 900, h: 1350, unlock: 4, section: "aurelian" },
     { id: "mara", name: "Mara Aurelian", file: "assets/personajes/mara-aurelian.webp", w: 900, h: 1350, unlock: 14, section: "aurelian" },
+    { id: "edria", name: "Edria Aurelian", file: "assets/personajes/edria-aurelian.webp", w: 900, h: 1350, unlock: 13, section: "aurelian" },
     { id: "rivan", name: "Rivan Aurelian", file: "assets/personajes/rivan-aurelian.webp", w: 900, h: 1350, unlock: 14, section: "aurelian" },
     { id: "tavian", name: "Tavian Aurelian", file: "assets/personajes/tavian-aurelian.webp", w: 900, h: 1350, unlock: 14, section: "aurelian" },
     { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20, section: "fulgur" },
