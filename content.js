@@ -76,6 +76,8 @@ window.BOOK_DATA = {
     { id: "duvran", name: "Duvran Sevrin", file: "assets/personajes/duvran-sevrin.webp", w: 900, h: 1350, unlock: 11, section: "sevrin" },
     { id: "delyan", name: "Delyan", file: "assets/personajes/delyan.webp", w: 900, h: 1350, unlock: 11, section: "sevrin" },
     { id: "damar", name: "Damar Veyron", file: "assets/personajes/damar-veyron.webp", w: 900, h: 1350, unlock: 29, section: "veyron" },
+    { id: "loras", name: "Loras Corven", file: "assets/personajes/loras-corven.webp", w: 900, h: 1350, unlock: 12, section: "corven" },
+    { id: "averian", name: "Averian Vaelor", file: "assets/personajes/averian-vaelor.webp", w: 900, h: 1350, unlock: 23, section: "fulgur" },
     { id: "zane", name: "Zane Veyron", file: "assets/personajes/zane-veyron.webp", w: 900, h: 1350, unlock: 13, section: "veyron" },
     { id: "ysven", name: "Ysven Veyron", file: "assets/personajes/ysven-veyron.webp", w: 900, h: 1350, unlock: 13, section: "veyron" },
     { id: "solvar", name: "Solvar Helion", file: "assets/personajes/solvar-helion.webp", w: 900, h: 1350, unlock: 13, section: "helion" },
