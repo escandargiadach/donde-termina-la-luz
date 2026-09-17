@@ -106,6 +106,11 @@ window.BOOK_DATA = {
     { id: "tor", name: "Tor'Vaer", file: "assets/personajes/tor-vaer.webp", w: 900, h: 1350, unlock: 30, section: "dientes" },
     { id: "yorn", name: "Yorn'Taz", file: "assets/personajes/yorn-taz.webp", w: 900, h: 1350, unlock: 30, section: "dientes" }
   ],
+  // Escenas en bucle. Son mp4 MUDOS, no gif: el mismo clip en gif pesaba
+  // 30 MB y en mp4 1,8. Se pausan mientras suena el audiolibro.
+  scenes: [
+    { id: "delyan", name: "Delyan", file: "assets/escenas/delyan-combate.mp4", poster: "assets/escenas/delyan-combate.webp", w: 900, h: 506, unlock: 11, caption: "Guardia de élite de Casa Sevrin" }
+  ],
   chapters: [
     { number: 1, title: "El héroe de CAM-17", part: "Parte I", file: "01-el-heroe-de-cam-17.mp3", seconds: 2121 },
     { number: 2, title: "Memoria de hielo", part: "Parte I", file: "02-memoria-de-hielo.mp3", seconds: 1350 },

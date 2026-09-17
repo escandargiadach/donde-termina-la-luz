@@ -371,3 +371,14 @@ input[type="range"]{width:100%;height:4px;accent-color:var(--ice);cursor:pointer
   *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
   #snow{display:none}
 }
+
+/* Escenas en bucle. Video mudo con loop, que hace de gif sin su peso. El poster
+   evita que el hueco quede en negro antes de que el video arranque. */
+.scene-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.scene-card{position:relative;margin:0;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:rgba(12,24,36,.6)}
+.scene-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--ice),transparent);box-shadow:0 0 14px var(--ice);z-index:2}
+.scene-card video{display:block;width:100%;height:auto;background:#050b12}
+.scene-card figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:4px;padding:48px 20px 16px;background:linear-gradient(to top,rgba(4,10,16,.94),rgba(4,10,16,.55) 55%,transparent)}
+.scene-card strong{font:500 22px/1.1 var(--serif);color:var(--ink)}
+.scene-card figcaption span{color:var(--muted);font-size:12px;letter-spacing:.04em}
+@media(max-width:900px){.scene-grid{grid-template-columns:1fr}}

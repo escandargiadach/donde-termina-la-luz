@@ -77,6 +77,7 @@
   renderParts();
   updateSpoilerToggle();
   renderCast();
+  renderScenes();
   selectChapter(selectedIndex, false, true);
   bindEvents();
   updateOverallProgress();
@@ -115,6 +116,9 @@
 
     elements.audio.addEventListener("loadedmetadata", onLoadedMetadata);
     elements.audio.addEventListener("timeupdate", onTimeUpdate);
+    elements.audio.addEventListener("play", ajustarEscenas);
+    elements.audio.addEventListener("pause", ajustarEscenas);
+    document.addEventListener("visibilitychange", ajustarEscenas);
     elements.audio.addEventListener("play", updatePlayState);
     elements.audio.addEventListener("pause", updatePlayState);
     elements.audio.addEventListener("ended", onEnded);
@@ -468,8 +472,59 @@
     }
   }
 
+  // Escenas en bucle: mp4 MUDOS con loop, que es un gif pero 17 veces mas ligero
+  // (el mismo clip en gif pesaba 30 MB y en mp4 1,8). Mismo bloqueo por capitulo
+  // que los retratos.
+  function renderScenes() {
+    const grid = document.getElementById("sceneGrid");
+    const seccion = document.getElementById("escenas");
+    if (!grid || !seccion || !Array.isArray(data.scenes) || !data.scenes.length) return;
+    const proteger = state.spoilers !== false;
+    const visibles = data.scenes.filter(e => !proteger || chapterReached(e.unlock));
+    // si no hay ninguna revelada, la seccion entera no existe: el titulo
+    // "Escenas" con tarjetas tapadas no aporta nada y ocupa pantalla
+    seccion.hidden = !visibles.length;
+    const html = visibles.map(e => `<figure class="scene-card">
+        <video src="${e.file}" poster="${e.poster}" width="${e.w}" height="${e.h}"
+               muted loop playsinline preload="none" disablepictureinpicture></video>
+        <figcaption><strong>${escapeHtml(e.name)}</strong>${e.caption ? `<span>${escapeHtml(e.caption)}</span>` : ""}</figcaption>
+      </figure>`).join("");
+    if (grid.dataset.firma === html) return;
+    grid.innerHTML = html;
+    grid.dataset.firma = html;
+    vigilarEscenas();
+    ajustarEscenas();
+  }
+
+  // Un bucle dibujando todo el tiempo entrecorta el audio en el telefono: es lo
+  // mismo que paso con la nieve. Se para mientras suena y con la pestaña oculta.
+  function ajustarEscenas() {
+    const quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const audio = document.getElementById("audio");
+    const sonando = audio && !audio.paused;
+    const parar = quieto || document.hidden || sonando;
+    document.querySelectorAll(".scene-card video").forEach(v => {
+      // Chrome pausa por su cuenta el video mudo que no se ve ("video-only
+      // background media was paused to save power"), asi que ni se intenta.
+      if (parar || v.dataset.fuera === "1") { v.pause(); return; }
+      if (v.preload === "none") v.preload = "auto";
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    });
+  }
+
+  // marca cuales estan fuera de pantalla; si no hay IntersectionObserver se
+  // asume que todas estan a la vista y decide el navegador
+  function vigilarEscenas() {
+    if (!("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(entradas => {
+      entradas.forEach(e => { e.target.dataset.fuera = e.isIntersecting ? "0" : "1"; });
+      ajustarEscenas();
+    }, { rootMargin: "120px" });
+    document.querySelectorAll(".scene-card video").forEach(v => io.observe(v));
+  }
   // Abre una imagen a pantalla completa. Se cierra con Esc (lo hace <dialog>),
-  // tocando fuera, o con el boton.
+  // tocando fuera o en el aspa.
   function abrirLupa(src) {
     let dlg = document.getElementById("lupa");
     if (!dlg) {
@@ -507,6 +562,7 @@
     saveState();
     updateSpoilerToggle();
     renderCast();
+    renderScenes();
   }
 
   function renderParts() {
@@ -783,6 +839,7 @@
     updateBookTime();
     renderParts();
     renderCast();
+    renderScenes();
   }
 
   // Duracion de un capitulo: la medida por el navegador si ya cargo ese audio;
