@@ -220,7 +220,6 @@ main{width:min(1460px,100%);margin:0 auto}
 .cast-group figcaption span{color:var(--muted);font-size:12px;letter-spacing:.04em;text-transform:none;font-weight:400}
 .cast-lupa{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:rgba(8,16,24,.72);color:var(--ink);font-size:17px;line-height:1;cursor:zoom-in}
 .cast-lupa:hover{border-color:rgba(143,209,231,.45)}
-.cast-group.locked{aspect-ratio:2/1;cursor:default}
 .cast-group.locked img{display:none}
 dialog#lupa{max-width:96vw;max-height:96vh;padding:0;border:0;border-radius:12px;background:transparent;overflow:visible}
 dialog#lupa::backdrop{background:rgba(3,7,12,.92)}
@@ -228,13 +227,22 @@ dialog#lupa img{display:block;max-width:96vw;max-height:92vh;width:auto;height:a
 dialog#lupa button{position:absolute;top:-6px;right:-6px;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:#0b1520;color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
 @media(max-width:620px){.cast-group figcaption{padding:44px 16px 16px}.cast-lupa{top:10px;right:10px}}
 
-/* Tarjeta bloqueada: ni cara ni nombre hasta que el libro lo presente. */
-.cast-card.locked{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:2/3;background:linear-gradient(160deg,rgba(18,38,54,.85),rgba(8,16,24,.92))}
+/* Tarjeta bloqueada: ni cara ni nombre hasta que el libro lo presente.
+   NO lleva la proporcion 2:3 del retrato: no hay retrato que mostrar, y al
+   empezar el libro hay 60 bloqueadas. Con 2:3 la seccion medía 14.280 px, unas
+   18 pantallas de "? ? ?". Apaisadas ocupan menos de un tercio. */
+.cast-card.locked{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:5/3;background:linear-gradient(160deg,rgba(18,38,54,.85),rgba(8,16,24,.92))}
 .cast-card.locked:hover{transform:none;box-shadow:none;border-color:var(--line)}
-.cast-locked-art{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(38px,5vw,60px);color:rgba(143,209,231,.22)}
-.cast-card.locked figcaption{position:static;background:none;padding:0 22px 22px}
-.cast-card.locked strong{font-size:22px;letter-spacing:.3em;color:var(--muted)}
-.cast-card.locked figcaption span{color:rgba(137,162,178,.75)}
+.cast-locked-art{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(28px,3.4vw,40px);color:rgba(143,209,231,.22)}
+.cast-card.locked figcaption{position:static;background:none;padding:0 18px 14px}
+.cast-card.locked strong{font-size:17px;letter-spacing:.26em;color:var(--muted)}
+.cast-card.locked figcaption span{color:rgba(137,162,178,.75);font-size:11px}
+/* que una bloqueada baja no estire a sus vecinas de fila */
+.cast-grid{align-items:start}
+/* el grupo bloqueado ocupa la fila entera: con la proporcion de tarjeta medía
+   886x532. Va DESPUES de .cast-card.locked a proposito: misma especificidad,
+   gana el ultimo. */
+.cast-card.cast-group.locked{aspect-ratio:auto;min-height:132px;cursor:default}
 
 .saga-section{padding-top:30px;border-top:0}
 .saga-card{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:clamp(32px,5vw,64px);border-radius:28px;background:linear-gradient(135deg,rgba(14,30,44,.78),rgba(26,60,82,.5))}
