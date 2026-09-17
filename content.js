@@ -18,10 +18,14 @@ window.BOOK_DATA = {
   // cuyos personajes siguen TODOS bloqueados no se pinta con su nombre: el
   // encabezado ("Dientes de Ceniza") ya seria el spoiler que se quiere evitar.
   castSections: [
+    { id: "principales", name: "Personajes principales" },
     { id: "cam17", name: "CAM-17" },
+    { id: "gelidos", name: "Gélidos" },
+    { id: "aurelian", name: "Aurelian", realm: "Fulgur" },
     { id: "fulgur", name: "Fulgur" },
+    { id: "assum", name: "Assum" },
     { id: "eternum", name: "Los Soryn", realm: "Eternum" },
-    { id: "assum", name: "Assum" }
+    { id: "rhazir", name: "Rhazir" }
   ],
   // Retratos de grupo: una sola imagen ancha que se abre en grande, con los
   // nombres al pie. Mismo bloqueo por capitulo que los retratos sueltos.
@@ -31,25 +35,25 @@ window.BOOK_DATA = {
   ],
   characters: [
     { id: "gael", name: "Gael Altaren", file: "assets/personajes/gael-altaren.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
-    { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
-    { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
-    { id: "kier", name: "Kier de Vries", file: "assets/personajes/kier-de-vries.webp", w: 900, h: 1351, unlock: 1, section: "cam17" },
-    { id: "lina", name: "Lina Aurelian", file: "assets/personajes/lina-aurelian.webp", w: 900, h: 1348, unlock: 1, section: "cam17" },
-    { id: "daren", name: "Daren de Vries", file: "assets/personajes/daren-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
-    { id: "elias", name: "Elías Sevrin", file: "assets/personajes/elias-sevrin.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
-    { id: "ansel", name: "Ansel Nahl", file: "assets/personajes/ansel-nahl.webp", w: 900, h: 1350, unlock: 2, section: "cam17" },
+    { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "principales" },
+    { id: "elian", name: "Elian Nahl", file: "assets/personajes/elian-nahl.webp", w: 900, h: 1350, unlock: 1, section: "principales" },
+    { id: "kier", name: "Kier de Vries", file: "assets/personajes/kier-de-vries.webp", w: 900, h: 1351, unlock: 1, section: "principales" },
+    { id: "lina", name: "Lina Aurelian", file: "assets/personajes/lina-aurelian.webp", w: 900, h: 1348, unlock: 1, section: "principales" },
+    { id: "daren", name: "Daren de Vries", file: "assets/personajes/daren-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "principales" },
+    { id: "elias", name: "Elías Sevrin", file: "assets/personajes/elias-sevrin.webp", w: 900, h: 1350, unlock: 2, section: "principales" },
+    { id: "ansel", name: "Ansel Nahl", file: "assets/personajes/ansel-nahl.webp", w: 900, h: 1350, unlock: 2, section: "gelidos" },
     { id: "jun", name: "Jun Arven", file: "assets/personajes/jun-arven.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "tomas", name: "Tomas Eiden", file: "assets/personajes/tomas-eiden.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "vera", name: "Vera Helion", file: "assets/personajes/vera-helion.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "nila", name: "Nila Sorn", file: "assets/personajes/nila-sorn.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
     { id: "iris", name: "Iris Veyra", file: "assets/personajes/iris-veyra.webp", w: 900, h: 1350, unlock: 4, section: "cam17" },
-    { id: "scar", name: "Scar", file: "assets/personajes/scar.webp", w: 900, h: 1350, unlock: 16, section: "cam17" },
+    { id: "scar", name: "Scar", file: "assets/personajes/scar.webp", w: 900, h: 1350, unlock: 16, section: "principales" },
     { id: "maelis", name: "Maelis Varen", file: "assets/personajes/maelis-varen.webp", w: 900, h: 1350, unlock: 36, section: "cam17" },
-    { id: "lucan", name: "Lucan Aurelian", file: "assets/personajes/lucan-aurelian.webp", w: 900, h: 1350, unlock: 1, section: "fulgur" },
-    { id: "tavian", name: "Tavian Aurelian", file: "assets/personajes/tavian-aurelian.webp", w: 900, h: 1350, unlock: 14, section: "fulgur" },
+    { id: "lucan", name: "Lucan Aurelian", file: "assets/personajes/lucan-aurelian.webp", w: 900, h: 1350, unlock: 1, section: "aurelian" },
+    { id: "tavian", name: "Tavian Aurelian", file: "assets/personajes/tavian-aurelian.webp", w: 900, h: 1350, unlock: 14, section: "aurelian" },
     { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20, section: "fulgur" },
-    { id: "nara", name: "Nara", file: "assets/personajes/nara.webp", w: 900, h: 1350, unlock: 24, section: "fulgur" },
-    { id: "calev", name: "Calev", file: "assets/personajes/calev.webp", w: 900, h: 1350, unlock: 24, section: "fulgur" },
+    { id: "nara", name: "Nara", file: "assets/personajes/nara.webp", w: 900, h: 1350, unlock: 24, section: "aurelian" },
+    { id: "calev", name: "Calev", file: "assets/personajes/calev.webp", w: 900, h: 1350, unlock: 24, section: "aurelian" },
     { id: "aldren", name: "Aldren Soryn", epithet: "El Heredero de la Luna Bélica", file: "assets/personajes/aldren-soryn.webp", w: 900, h: 1350, unlock: 23, section: "eternum" },
     { id: "yseva", name: "Yseva Soryn", epithet: "La Astrónoma de la Guerra", file: "assets/personajes/yseva-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
     { id: "hastir", name: "Hastir Soryn", epithet: "La Garra Carmesí", file: "assets/personajes/hastir-soryn.webp", w: 900, h: 1350, unlock: 31, section: "eternum" },
