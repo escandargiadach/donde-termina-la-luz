@@ -37,6 +37,8 @@ window.BOOK_DATA = {
   // Retratos de grupo: una sola imagen ancha que se abre en grande, con los
   // nombres al pie. Mismo bloqueo por capitulo que los retratos sueltos.
   groups: [
+    { id: "madres", name: "Las dos madres", file: "assets/personajes/las-dos-madres.webp", w: 1600, h: 1431, unlock: 36, section: "cam17",
+      caption: "Maelis Varen · Ilyra Aurelian" },
     { id: "dientes", name: "Dientes de Ceniza", file: "assets/personajes/dientes-de-ceniza.webp", w: 2400, h: 1200, unlock: 30, section: "dientes",
       caption: "Hal'Verkan · Dra'Vik · Rask · Bryn'Veth · Tor'Vaer · Yorn'Taz" }
   ],
@@ -73,6 +75,7 @@ window.BOOK_DATA = {
     { id: "nethar", name: "Nethar Sevrin", file: "assets/personajes/nethar-sevrin.webp", w: 900, h: 1350, unlock: 11, section: "sevrin" },
     { id: "duvran", name: "Duvran Sevrin", file: "assets/personajes/duvran-sevrin.webp", w: 900, h: 1350, unlock: 11, section: "sevrin" },
     { id: "delyan", name: "Delyan", file: "assets/personajes/delyan.webp", w: 900, h: 1350, unlock: 11, section: "sevrin" },
+    { id: "damar", name: "Damar Veyron", file: "assets/personajes/damar-veyron.webp", w: 900, h: 1350, unlock: 29, section: "veyron" },
     { id: "zane", name: "Zane Veyron", file: "assets/personajes/zane-veyron.webp", w: 900, h: 1350, unlock: 13, section: "veyron" },
     { id: "ysven", name: "Ysven Veyron", file: "assets/personajes/ysven-veyron.webp", w: 900, h: 1350, unlock: 13, section: "veyron" },
     { id: "solvar", name: "Solvar Helion", file: "assets/personajes/solvar-helion.webp", w: 900, h: 1350, unlock: 13, section: "helion" },
