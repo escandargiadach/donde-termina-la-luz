@@ -27,16 +27,22 @@ window.BOOK_DATA = {
     { id: "helion", name: "Helion", realm: "Fulgur" },
     { id: "veyron", name: "Veyron", realm: "Fulgur" },
     { id: "corven", name: "Corven", realm: "Fulgur" },
+    { id: "ordel", name: "Ordel", realm: "Fulgur" },
+    { id: "solenne", name: "Solenne", realm: "Fulgur" },
     { id: "fulgur", name: "Fulgur" },
     { id: "ardent", name: "Ardent", realm: "Assum" },
     { id: "sareth", name: "Sareth", realm: "Assum" },
     { id: "dientes", name: "Dientes de Ceniza", realm: "Assum" },
     { id: "assum", name: "Assum" },
-    { id: "eternum", name: "Los Soryn", realm: "Eternum" }
+    { id: "eternum", name: "Los hermanos Soryn", realm: "Eternum" }
   ],
   // Retratos de grupo: una sola imagen ancha que se abre en grande, con los
   // nombres al pie. Mismo bloqueo por capitulo que los retratos sueltos.
   groups: [
+    { id: "corvenh", name: "Odran y Levik Corven", file: "assets/personajes/corven-hermanos.webp", w: 1800, h: 1350, unlock: 29, section: "corven",
+      caption: "Odran Corven · Levik Corven" },
+    { id: "solenneh", name: "Rhoven y Orielle Solenne", file: "assets/personajes/rhoven-orielle.webp", w: 1800, h: 1200, unlock: 29, section: "solenne",
+      caption: "Rhoven Solenne · Orielle Solenne" },
     { id: "madres", name: "Las dos madres", file: "assets/personajes/las-dos-madres.webp", w: 1600, h: 1431, unlock: 36, section: "cam17",
       caption: "Maelis Varen · Ilyra Aurelian" },
     { id: "dientes", name: "Dientes de Ceniza", file: "assets/personajes/dientes-de-ceniza.webp", w: 2400, h: 1200, unlock: 30, section: "dientes",
@@ -76,6 +82,7 @@ window.BOOK_DATA = {
     { id: "duvran", name: "Duvran Sevrin", file: "assets/personajes/duvran-sevrin.webp", w: 900, h: 1350, unlock: 11, section: "sevrin" },
     { id: "delyan", name: "Delyan", file: "assets/personajes/delyan.webp", w: 900, h: 1350, unlock: 11, section: "sevrin" },
     { id: "damar", name: "Damar Veyron", file: "assets/personajes/damar-veyron.webp", w: 900, h: 1350, unlock: 29, section: "veyron" },
+    { id: "nhyr", name: "Nhyr Ordel", file: "assets/personajes/nhyr-ordel.webp", w: 900, h: 1350, unlock: 29, section: "ordel" },
     { id: "loras", name: "Loras Corven", file: "assets/personajes/loras-corven.webp", w: 900, h: 1350, unlock: 12, section: "corven" },
     { id: "averian", name: "Averian Vaelor", file: "assets/personajes/averian-vaelor.webp", w: 900, h: 1350, unlock: 23, section: "fulgur" },
     { id: "zane", name: "Zane Veyron", file: "assets/personajes/zane-veyron.webp", w: 900, h: 1350, unlock: 13, section: "veyron" },
