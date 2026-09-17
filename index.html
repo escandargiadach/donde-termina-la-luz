@@ -26,6 +26,7 @@
     </a>
     <nav class="desktop-nav" aria-label="Navegación principal">
       <a href="#escuchar">Escuchar</a>
+      <a href="#trailer">Tráiler</a>
       <a href="#escenas">Escenas</a>
       <a href="#personajes">Personajes</a>
       <a href="#saga">Libro I</a>
@@ -36,6 +37,7 @@
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <button class="mobile-close" id="mobileClose" type="button" aria-label="Cerrar menú">×</button>
     <a href="#escuchar">Escuchar</a>
+    <a href="#trailer">Tráiler</a>
     <a href="#escenas">Escenas</a>
     <a href="#personajes">Personajes</a>
     <a href="#saga">Libro I</a>
@@ -111,6 +113,21 @@
           </div>
           <div class="chapter-list" id="chapterList"></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section trailer-section" id="trailer">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">El ciclo inmóvil</p>
+          <h2>Tráiler</h2>
+          <p>Tres minutos. Si lo reproduces, el audiolibro se pausa solo.</p>
+        </div>
+      </div>
+      <div class="trailer-frame">
+        <video id="trailerVideo" src="assets/escenas/trailer.mp4"
+               poster="assets/escenas/trailer.webp" width="1280" height="720"
+               controls preload="none" playsinline></video>
       </div>
     </section>
 

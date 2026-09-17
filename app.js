@@ -116,6 +116,12 @@
 
     elements.audio.addEventListener("loadedmetadata", onLoadedMetadata);
     elements.audio.addEventListener("timeupdate", onTimeUpdate);
+    // el trailer y el audiolibro no suenan a la vez: el que arranca para al otro
+    const trailer = document.getElementById("trailerVideo");
+    if (trailer) {
+      trailer.addEventListener("play", () => { if (!elements.audio.paused) elements.audio.pause(); });
+      elements.audio.addEventListener("play", () => { if (!trailer.paused) trailer.pause(); });
+    }
     elements.audio.addEventListener("play", ajustarEscenas);
     elements.audio.addEventListener("pause", ajustarEscenas);
     document.addEventListener("visibilitychange", ajustarEscenas);
