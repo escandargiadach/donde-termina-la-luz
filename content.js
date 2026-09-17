@@ -46,6 +46,7 @@ window.BOOK_DATA = {
     { id: "scar", name: "Scar", file: "assets/personajes/scar.webp", w: 900, h: 1350, unlock: 16, section: "cam17" },
     { id: "maelis", name: "Maelis Varen", file: "assets/personajes/maelis-varen.webp", w: 900, h: 1350, unlock: 36, section: "cam17" },
     { id: "lucan", name: "Lucan Aurelian", file: "assets/personajes/lucan-aurelian.webp", w: 900, h: 1350, unlock: 1, section: "fulgur" },
+    { id: "tavian", name: "Tavian Aurelian", file: "assets/personajes/tavian-aurelian.webp", w: 900, h: 1350, unlock: 14, section: "fulgur" },
     { id: "zaira", name: "Zaira", file: "assets/personajes/zaira.webp", w: 900, h: 1349, unlock: 20, section: "fulgur" },
     { id: "nara", name: "Nara", file: "assets/personajes/nara.webp", w: 900, h: 1350, unlock: 24, section: "fulgur" },
     { id: "calev", name: "Calev", file: "assets/personajes/calev.webp", w: 900, h: 1350, unlock: 24, section: "fulgur" },
