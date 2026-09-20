@@ -8,7 +8,7 @@ window.BOOK_DATA = {
     volume: "Libro II",
     author: "Escandar Giadach",
     audioBaseUrl: "audio/",
-    audioVersion: 3,
+    audioVersion: 4,
     frontMatter: { title: "Presentación", kicker: "Antes de empezar", file: "00-donde-termina-la-luz.mp3", seconds: 7 }
   },
   // Retratos. "unlock" es el capitulo en el que el libro NOMBRA por primera vez
@@ -117,7 +117,7 @@ window.BOOK_DATA = {
     { number: 1, title: "El héroe de CAM-17", part: "Parte I", file: "01-el-heroe-de-cam-17.mp3", seconds: 2264 },
     { number: 2, title: "Memoria de hielo", part: "Parte I", file: "02-memoria-de-hielo.mp3", seconds: 1359 },
     { number: 3, title: "Una cosa a la vez", part: "Parte I", file: "03-una-cosa-a-la-vez.mp3", seconds: 1832 },
-    { number: 4, title: "Bajo custodia", part: "Parte I", file: "04-bajo-custodia.mp3", seconds: 2544 },
+    { number: 4, title: "Bajo custodia", part: "Parte I", file: "04-bajo-custodia.mp3", seconds: 2545 },
     { number: 5, title: "Rutas de salida", part: "Parte I", file: "05-rutas-de-salida.mp3", seconds: 2289 },
     { number: 6, title: "Antes que termine el día", part: "Parte I", file: "06-antes-que-termine-el-dia.mp3", seconds: 2726 },
     { number: 7, title: "El rescate", part: "Parte I", file: "07-el-rescate.mp3", seconds: 2511 },
