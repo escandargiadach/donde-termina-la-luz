@@ -8,7 +8,7 @@ window.BOOK_DATA = {
     volume: "Libro II",
     author: "Escandar Giadach",
     audioBaseUrl: "audio/",
-    audioVersion: 6,
+    audioVersion: 7,
     frontMatter: { title: "Presentación", kicker: "Antes de empezar", file: "00-donde-termina-la-luz.mp3", seconds: 7 }
   },
   // Retratos. "unlock" es el capitulo en el que el libro NOMBRA por primera vez
@@ -120,7 +120,7 @@ window.BOOK_DATA = {
     { number: 4, title: "Bajo custodia", part: "Parte I", file: "04-bajo-custodia.mp3", seconds: 2545 },
     { number: 5, title: "Rutas de salida", part: "Parte I", file: "05-rutas-de-salida.mp3", seconds: 2282 },
     { number: 6, title: "Antes que termine el día", part: "Parte I", file: "06-antes-que-termine-el-dia.mp3", seconds: 2726 },
-    { number: 7, title: "El rescate", part: "Parte I", file: "07-el-rescate.mp3", seconds: 2509 },
+    { number: 7, title: "El rescate", part: "Parte I", file: "07-el-rescate.mp3", seconds: 2510 },
     { number: 8, title: "Demasiado fuerte", part: "Parte I", file: "08-demasiado-fuerte.mp3", seconds: 1297 },
     { number: 9, title: "Del otro lado del Muro", part: "Parte II", file: "09-del-otro-lado-del-muro.mp3", seconds: 3488 },
     { number: 10, title: "El laboratorio", part: "Parte II", file: "10-el-laboratorio.mp3", seconds: 3030 },
