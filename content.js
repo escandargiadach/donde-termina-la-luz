@@ -8,7 +8,7 @@ window.BOOK_DATA = {
     volume: "Libro II",
     author: "Escandar Giadach",
     audioBaseUrl: "audio/",
-    audioVersion: 9,
+    audioVersion: 10,
     frontMatter: { title: "Presentación", kicker: "Antes de empezar", file: "00-donde-termina-la-luz.mp3", seconds: 7 }
   },
   // Retratos. "unlock" es el capitulo en el que el libro NOMBRA por primera vez
@@ -114,7 +114,7 @@ window.BOOK_DATA = {
     { id: "delyan", name: "Delyan", file: "assets/escenas/delyan-combate.mp4", poster: "assets/escenas/delyan-combate.webp", w: 900, h: 506, unlock: 11, caption: "Guardia de élite de Casa Sevrin" }
   ],
   chapters: [
-    { number: 1, title: "El héroe de CAM-17", part: "Parte I", file: "01-el-heroe-de-cam-17.mp3", seconds: 2344 },
+    { number: 1, title: "El héroe de CAM-17", part: "Parte I", file: "01-el-heroe-de-cam-17.mp3", seconds: 2350 },
     { number: 2, title: "Memoria de hielo", part: "Parte I", file: "02-memoria-de-hielo.mp3", seconds: 1358 },
     { number: 3, title: "Una cosa a la vez", part: "Parte I", file: "03-una-cosa-a-la-vez.mp3", seconds: 1828 },
     { number: 4, title: "Bajo custodia", part: "Parte I", file: "04-bajo-custodia.mp3", seconds: 2703 },
@@ -125,14 +125,14 @@ window.BOOK_DATA = {
     { number: 9, title: "Del otro lado del Muro", part: "Parte II", file: "09-del-otro-lado-del-muro.mp3", seconds: 3501 },
     { number: 10, title: "El laboratorio", part: "Parte II", file: "10-el-laboratorio.mp3", seconds: 3030 },
     { number: 11, title: "Bayas de escarcha", part: "Parte II", file: "11-bayas-de-escarcha.mp3", seconds: 2791 },
-    { number: 12, title: "Casi como en casa", part: "Parte II", file: "12-casi-como-en-casa.mp3", seconds: 1510 },
+    { number: 12, title: "Casi como en casa", part: "Parte II", file: "12-casi-como-en-casa.mp3", seconds: 1527 },
     { number: 13, title: "Derrotas", part: "Parte II", file: "13-derrotas.mp3", seconds: 1862 },
     { number: 14, title: "El Rojo", part: "Parte II", file: "14-el-rojo.mp3", seconds: 2354 },
     { number: 15, title: "Donde termina el mapa", part: "Parte II", file: "15-donde-termina-el-mapa.mp3", seconds: 1811 },
     { number: 16, title: "Hielo Rojo", part: "Parte II", file: "16-hielo-rojo.mp3", seconds: 1466 },
     { number: 17, title: "El apellido", part: "Parte III", file: "17-el-apellido.mp3", seconds: 1350 },
     { number: 18, title: "Bienvenida a la familia", part: "Parte III", file: "18-bienvenida-a-la-familia.mp3", seconds: 445 },
-    { number: 19, title: "Contingencias", part: "Parte III", file: "19-contingencias.mp3", seconds: 1383 },
+    { number: 19, title: "Contingencias", part: "Parte III", file: "19-contingencias.mp3", seconds: 1405 },
     { number: 20, title: "Trayectorias", part: "Parte III", file: "20-trayectorias.mp3", seconds: 1737 },
     { number: 21, title: "Lo que aprendieron", part: "Parte III", file: "21-lo-que-aprendieron.mp3", seconds: 1757 },
     { number: 22, title: "Reencuentro", part: "Parte III", file: "22-reencuentro.mp3", seconds: 974 },
