@@ -117,15 +117,9 @@
 
     elements.audio.addEventListener("loadedmetadata", onLoadedMetadata);
     elements.audio.addEventListener("timeupdate", onTimeUpdate);
-    // el trailer y el audiolibro no suenan a la vez: el que arranca para al otro
-    const trailer = document.getElementById("trailerVideo");
-    if (trailer) {
-      trailer.addEventListener("play", () => {
-        if (!elements.audio.paused) elements.audio.pause();
-        document.querySelectorAll("video[data-bucle]").forEach(v => v.pause());
-      });
-      elements.audio.addEventListener("play", () => { if (!trailer.paused) trailer.pause(); });
-    }
+    // 28-sep: fuera el trailer con sonido. Solo queda el que se reproduce solo,
+    // mudo y en bucle, y de pararlo mientras suena el audiolibro ya se encarga
+    // ajustarEscenas junto con el resto de los video[data-bucle].
     elements.audio.addEventListener("play", ajustarEscenas);
     elements.audio.addEventListener("pause", ajustarEscenas);
     document.addEventListener("visibilitychange", ajustarEscenas);
