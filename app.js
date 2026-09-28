@@ -493,28 +493,41 @@
   // tarjetas tapadas —ahi se ve el desbloqueo avanzar—, y el resto va junto en
   // «Aún por revelar» sin decir de que capitulo es cada uno, para no adelantar
   // cuanta gente entra en cada tramo del libro.
+  // 28-sep, segunda vuelta (Escandar): por capitulo se muestran ESCENAS, de 2 a
+  // 5 por capitulo, con los personajes haciendo lo que pasa en el. Los retratos
+  // sueltos son del personaje ya avanzado el libro y no dan contexto. Mientras
+  // un capitulo no tenga escenas, sigue mostrando a sus personajes, para que la
+  // vista no quede vacia mientras se generan las imagenes.
+  function tarjetaEscena(e, abierta) {
+    if (!abierta) {
+      return `<figure class="cast-card cast-group locked">
+          <span class="cast-locked-art" aria-hidden="true">✦</span>
+          <figcaption><strong aria-label="Escena aún no revelada">? ? ?</strong><span>Se revela más adelante</span></figcaption>
+        </figure>`;
+    }
+    return `<figure class="cast-card cast-group cast-escena">
+        <img src="${e.file}" alt="${escapeHtml(e.name)}" width="${e.w}" height="${e.h}" loading="lazy" decoding="async">
+        <figcaption><strong>${escapeHtml(e.name)}</strong>${e.caption ? `<span>${escapeHtml(e.caption)}</span>` : ""}</figcaption>
+        <button class="cast-lupa" type="button" data-abrir="${e.file}" aria-label="Ver ${escapeHtml(e.name)} en grande">⤢</button>
+      </figure>`;
+  }
+
   function repartoPorCapitulo(grupos, visible, tarjetaPersona, tarjetaGrupo) {
     let html = "", siguiente = "", resto = "";
     const escenas = Array.isArray(data.chapterArt) ? data.chapterArt : [];
     data.chapters.forEach(c => {
+      const suyas = escenas.filter(e => e.chapter === c.number);
       const personas = data.characters.filter(p => p.unlock === c.number);
       const propios = grupos.filter(g => g.unlock === c.number);
-      // la escena del capitulo va primero y a todo lo ancho; es la imagen de
-      // ESE momento, no el retrato del final del libro
-      const escena = escenas.find(e => e.chapter === c.number);
-      if (!personas.length && !propios.length && !escena) return;
-      const piezas = personas.map(tarjetaPersona).join("") + propios.map(tarjetaGrupo).join("");
+      if (!suyas.length && !personas.length && !propios.length) return;
+      const abierto = visible({ unlock: c.number });
+      const piezas = suyas.length
+        ? suyas.map(e => tarjetaEscena(e, abierto)).join("")
+        : personas.map(tarjetaPersona).join("") + propios.map(tarjetaGrupo).join("");
       const nombre = c.label || `Capítulo ${c.number}`;
-      if (visible({ unlock: c.number })) {
-        const cabecera = escena
-          ? `<figure class="cast-card cast-group cast-escena">
-              <img src="${escena.file}" alt="${escapeHtml(escena.name)}" width="${escena.w}" height="${escena.h}" loading="lazy" decoding="async">
-              <figcaption><strong>${escapeHtml(escena.name)}</strong></figcaption>
-              <button class="cast-lupa" type="button" data-abrir="${escena.file}" aria-label="Ver ${escapeHtml(escena.name)} en grande">⤢</button>
-            </figure>`
-          : "";
+      if (abierto) {
         html += `<h3 class="cast-head">${escapeHtml(nombre)}` +
-                `<span>${escapeHtml(c.title)}</span></h3>` + cabecera + piezas;
+                `<span>${escapeHtml(c.title)}</span></h3>` + piezas;
       } else if (!siguiente && piezas) {
         // un capitulo con escena pero sin gente nueva no gasta el adelanto
         const cual = c.label ? `el ${c.label}` : `el capítulo ${c.number}`;
@@ -640,7 +653,7 @@
     const intro = document.getElementById("castIntro");
     if (intro) {
       intro.textContent = orden === "capitulo"
-        ? "En el orden en que aparecen, capítulo a capítulo."
+        ? "Lo que pasa en cada capítulo, a medida que lo escuchas."
         : "Agrupados por facción, en el orden en que el libro los presenta.";
     }
   }
