@@ -139,15 +139,21 @@
         <div>
           <p class="eyebrow">Libro II</p>
           <h2>Personajes</h2>
-          <p>Agrupados por facción, en el orden en que el libro los presenta.</p>
+          <p id="castIntro">Agrupados por facción, en el orden en que el libro los presenta.</p>
         </div>
-        <button class="spoiler-toggle" id="spoilerToggle" type="button" role="switch" aria-checked="true">
-          <span class="spoiler-track" aria-hidden="true"><span class="spoiler-knob"></span></span>
-          <span class="spoiler-text">
-            <strong>Evitar spoilers</strong>
-            <span id="spoilerNote">Se revelan al terminar el capítulo en que aparecen.</span>
-          </span>
-        </button>
+        <div class="cast-controls">
+          <div class="cast-order" role="group" aria-label="Ordenar personajes">
+            <button type="button" data-orden="faccion" aria-pressed="true">Por facción</button>
+            <button type="button" data-orden="capitulo" aria-pressed="false">Por capítulo</button>
+          </div>
+          <button class="spoiler-toggle" id="spoilerToggle" type="button" role="switch" aria-checked="true">
+            <span class="spoiler-track" aria-hidden="true"><span class="spoiler-knob"></span></span>
+            <span class="spoiler-text">
+              <strong>Evitar spoilers</strong>
+              <span id="spoilerNote">Se revelan al terminar el capítulo en que aparecen.</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="cast-grid" id="castGrid"></div>
     </section>

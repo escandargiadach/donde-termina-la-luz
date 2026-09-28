@@ -47,7 +47,8 @@
     completed: {},
     unavailable: {},
     speed: 1,
-    spoilers: true   // true = proteger; el oyente puede apagarlo
+    spoilers: true,  // true = proteger; el oyente puede apagarlo
+    castOrder: "faccion"   // "faccion" | "capitulo" (28-sep)
   };
 
   const saved = safeParse(localStorage.getItem(STORAGE_KEY));
@@ -76,6 +77,7 @@
   renderChapters();
   renderParts();
   updateSpoilerToggle();
+  updateCastOrder();
   renderCast();
   renderScenes();
   vigilarEscenas();
@@ -108,6 +110,8 @@
     elements.mobileMenu.addEventListener("click", (event) => { if (event.target.tagName === "A") closeMenu(); });
     elements.offlineButton.addEventListener("click", saveCurrentAudioOffline);
     document.getElementById("spoilerToggle")?.addEventListener("click", toggleSpoilers);
+    document.querySelectorAll(".cast-order [data-orden]").forEach(b =>
+      b.addEventListener("click", () => cambiarOrdenReparto(b.dataset.orden)));
     document.getElementById("castGrid")?.addEventListener("click", event => {
       const g = event.target.closest(".cast-group:not(.locked)");
       if (!g) return;
@@ -438,6 +442,10 @@
         </figure>`;
 
     const grupos = Array.isArray(data.groups) ? data.groups : [];
+    if (state.castOrder === "capitulo") {
+      pintarReparto(grid, repartoPorCapitulo(grupos, visible, tarjetaPersona, tarjetaGrupo));
+      return;
+    }
     const secciones = Array.isArray(data.castSections) ? data.castSections : [];
     const colocadas = new Set();
     let html = "";
@@ -468,12 +476,48 @@
       html += `<h3 class="cast-head cast-head-mute">Aún por revelar</h3>` + pendientes + sueltas;
     }
 
-    // updateOverallProgress corre en cada avance del audio: repintar solo si algo
-    // cambio, para no pelear con la reproduccion en el telefono.
+    pintarReparto(grid, html);
+  }
+
+  // updateOverallProgress corre en cada avance del audio: repintar solo si algo
+  // cambio, para no pelear con la reproduccion en el telefono.
+  function pintarReparto(grid, html) {
     if (grid.dataset.firma !== html) {
       grid.innerHTML = html;
       grid.dataset.firma = html;
     }
+  }
+
+  // Por capitulo: cada capitulo TERMINADO abre su bloque con los personajes que
+  // aparecen en el. El siguiente capitulo que trae gente nueva se anuncia con sus
+  // tarjetas tapadas —ahi se ve el desbloqueo avanzar—, y el resto va junto en
+  // «Aún por revelar» sin decir de que capitulo es cada uno, para no adelantar
+  // cuanta gente entra en cada tramo del libro.
+  function repartoPorCapitulo(grupos, visible, tarjetaPersona, tarjetaGrupo) {
+    let html = "", siguiente = "", resto = "";
+    data.chapters.forEach(c => {
+      const personas = data.characters.filter(p => p.unlock === c.number);
+      const propios = grupos.filter(g => g.unlock === c.number);
+      if (!personas.length && !propios.length) return;
+      const piezas = personas.map(tarjetaPersona).join("") + propios.map(tarjetaGrupo).join("");
+      const nombre = c.label || `Capítulo ${c.number}`;
+      if (visible({ unlock: c.number })) {
+        html += `<h3 class="cast-head">${escapeHtml(nombre)}` +
+                `<span>${escapeHtml(c.title)}</span></h3>` + piezas;
+      } else if (!siguiente) {
+        const cual = c.label ? `el ${c.label}` : `el capítulo ${c.number}`;
+        siguiente = `<h3 class="cast-head cast-head-mute">Al terminar ${escapeHtml(cual)}</h3>` + piezas;
+      } else {
+        resto += piezas;
+      }
+    });
+    // lo que apunte a un capitulo que no existe no se pierde
+    const numeros = new Set(data.chapters.map(c => c.number));
+    resto += data.characters.filter(p => !numeros.has(p.unlock)).map(tarjetaPersona).join("") +
+             grupos.filter(g => !numeros.has(g.unlock)).map(tarjetaGrupo).join("");
+    html += siguiente;
+    if (resto) html += `<h3 class="cast-head cast-head-mute">Aún por revelar</h3>` + resto;
+    return html;
   }
 
   // Escenas en bucle: mp4 MUDOS con loop, que es un gif pero 17 veces mas ligero
@@ -573,6 +617,29 @@
     updateSpoilerToggle();
     renderCast();
     renderScenes();
+  }
+
+  // Orden del reparto: por faccion (el de siempre) o por capitulo, que muestra
+  // a los personajes apareciendo a medida que avanza el libro (Escandar, 28-sep).
+  function updateCastOrder() {
+    const orden = state.castOrder === "capitulo" ? "capitulo" : "faccion";
+    document.querySelectorAll(".cast-order [data-orden]").forEach(b =>
+      b.setAttribute("aria-pressed", String(b.dataset.orden === orden)));
+    const intro = document.getElementById("castIntro");
+    if (intro) {
+      intro.textContent = orden === "capitulo"
+        ? "En el orden en que aparecen, capítulo a capítulo."
+        : "Agrupados por facción, en el orden en que el libro los presenta.";
+    }
+  }
+
+  function cambiarOrdenReparto(orden) {
+    if (orden !== "faccion" && orden !== "capitulo") return;
+    if (state.castOrder === orden) return;
+    state.castOrder = orden;
+    saveState();
+    updateCastOrder();
+    renderCast();
   }
 
   function renderParts() {

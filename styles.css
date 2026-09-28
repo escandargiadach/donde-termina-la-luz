@@ -212,6 +212,14 @@ main{width:min(1460px,100%);margin:0 auto}
 .spoiler-text strong{font:500 20px/1.1 var(--serif);color:var(--ink)}
 .spoiler-text span{max-width:34ch;color:var(--muted);font-size:12px;line-height:1.5}
 @media(max-width:620px){.spoiler-toggle{width:100%}}
+/* selector de orden del reparto (28-sep): mismo vidrio que el interruptor de spoilers */
+.cast-controls{display:flex;flex-direction:column;align-items:stretch;gap:10px;flex:none}
+.cast-order{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:16px;background:rgba(12,24,36,.6)}
+.cast-order button{flex:1;padding:10px 14px;border:0;border-radius:12px;background:transparent;color:var(--muted);font:500 18px/1.1 var(--serif);cursor:pointer;transition:background .2s ease,color .2s ease}
+.cast-order button:hover{color:var(--ink)}
+.cast-order button[aria-pressed="true"]{background:rgba(143,209,231,.16);color:var(--ink)}
+.cast-order button:focus-visible{outline:2px solid var(--ice);outline-offset:2px}
+@media(max-width:620px){.cast-controls{width:100%}}
 
 /* Retrato de grupo: ocupa la fila entera y se abre en grande al tocarlo. */
 .cast-group{grid-column:1/-1;cursor:zoom-in}
