@@ -495,16 +495,28 @@
   // cuanta gente entra en cada tramo del libro.
   function repartoPorCapitulo(grupos, visible, tarjetaPersona, tarjetaGrupo) {
     let html = "", siguiente = "", resto = "";
+    const escenas = Array.isArray(data.chapterArt) ? data.chapterArt : [];
     data.chapters.forEach(c => {
       const personas = data.characters.filter(p => p.unlock === c.number);
       const propios = grupos.filter(g => g.unlock === c.number);
-      if (!personas.length && !propios.length) return;
+      // la escena del capitulo va primero y a todo lo ancho; es la imagen de
+      // ESE momento, no el retrato del final del libro
+      const escena = escenas.find(e => e.chapter === c.number);
+      if (!personas.length && !propios.length && !escena) return;
       const piezas = personas.map(tarjetaPersona).join("") + propios.map(tarjetaGrupo).join("");
       const nombre = c.label || `Capítulo ${c.number}`;
       if (visible({ unlock: c.number })) {
+        const cabecera = escena
+          ? `<figure class="cast-card cast-group cast-escena">
+              <img src="${escena.file}" alt="${escapeHtml(escena.name)}" width="${escena.w}" height="${escena.h}" loading="lazy" decoding="async">
+              <figcaption><strong>${escapeHtml(escena.name)}</strong></figcaption>
+              <button class="cast-lupa" type="button" data-abrir="${escena.file}" aria-label="Ver ${escapeHtml(escena.name)} en grande">⤢</button>
+            </figure>`
+          : "";
         html += `<h3 class="cast-head">${escapeHtml(nombre)}` +
-                `<span>${escapeHtml(c.title)}</span></h3>` + piezas;
-      } else if (!siguiente) {
+                `<span>${escapeHtml(c.title)}</span></h3>` + cabecera + piezas;
+      } else if (!siguiente && piezas) {
+        // un capitulo con escena pero sin gente nueva no gasta el adelanto
         const cual = c.label ? `el ${c.label}` : `el capítulo ${c.number}`;
         siguiente = `<h3 class="cast-head cast-head-mute">Al terminar ${escapeHtml(cual)}</h3>` + piezas;
       } else {

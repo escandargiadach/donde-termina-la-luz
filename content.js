@@ -50,6 +50,13 @@ window.BOOK_DATA = {
     { id: "dientes", name: "Dientes de Ceniza", file: "assets/personajes/dientes-de-ceniza.webp", w: 2400, h: 1200, unlock: 30, section: "dia",
       caption: "Hal'Verkan · Dra'Vik · Rask · Bryn'Veth · Tor'Vaer · Yorn'Taz" }
   ],
+  // Escenas de capitulo (28-sep): solo en el orden por capitulo, como cabecera
+  // del bloque. Los retratos sueltos muestran a cada personaje ya avanzado el
+  // libro; estas lo muestran como esta en ESE capitulo. Se ven al terminarlo.
+  chapterArt: [
+    { chapter: 1, name: "Después de CAM-17", file: "assets/capitulos/cap01-tras-cam17.webp", w: 1536, h: 1024 },
+    { chapter: 2, name: "Elian", file: "assets/capitulos/cap02-elian.webp", w: 1374, h: 1145 }
+  ],
   characters: [
     { id: "gael", name: "Gael Altaren", file: "assets/personajes/gael-altaren.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
     { id: "ian", name: "Ian de Vries", file: "assets/personajes/ian-de-vries.webp", w: 900, h: 1350, unlock: 1, section: "principales" },
