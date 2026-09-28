@@ -54,6 +54,8 @@ window.BOOK_DATA = {
   // del bloque. Los retratos sueltos muestran a cada personaje ya avanzado el
   // libro; estas lo muestran como esta en ESE capitulo. Se ven al terminarlo.
   chapterArt: [
+    { chapter: 1, name: "La grabación de Gael", file: "assets/capitulos/cap01-01-la-grabacion-de-gael.webp", w: 1536, h: 1024 },
+    { chapter: 1, name: "El muro de los nombres", file: "assets/capitulos/cap01-02-el-muro-de-los-nombres.webp", w: 1536, h: 1024 },
     { chapter: 1, name: "Después de CAM-17", file: "assets/capitulos/cap01-tras-cam17.webp", w: 1536, h: 1024 },
     { chapter: 2, name: "Elian", file: "assets/capitulos/cap02-elian.webp", w: 1374, h: 1145 }
   ],
