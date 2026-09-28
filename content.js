@@ -56,7 +56,6 @@ window.BOOK_DATA = {
   chapterArt: [
     { chapter: 1, name: "La grabación de Gael", file: "assets/capitulos/cap01-01-la-grabacion-de-gael.webp", w: 1536, h: 1024 },
     { chapter: 1, name: "El muro de los nombres", file: "assets/capitulos/cap01-02-el-muro-de-los-nombres.webp", w: 1536, h: 1024 },
-    { chapter: 1, name: "Después de CAM-17", file: "assets/capitulos/cap01-tras-cam17.webp", w: 1536, h: 1024 },
     { chapter: 2, name: "Elian", file: "assets/capitulos/cap02-elian.webp", w: 1374, h: 1145 }
   ],
   characters: [

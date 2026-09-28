@@ -498,6 +498,8 @@
   // sueltos son del personaje ya avanzado el libro y no dan contexto. Mientras
   // un capitulo no tenga escenas, sigue mostrando a sus personajes, para que la
   // vista no quede vacia mientras se generan las imagenes.
+  // 28-sep, tercera vuelta (Escandar): «dejemos solo las imagenes por capitulo».
+  // Ya no hay retratos de relleno: un capitulo sin escenas no aparece.
   function tarjetaEscena(e, abierta) {
     if (!abierta) {
       return `<figure class="cast-card cast-group locked">
@@ -517,13 +519,9 @@
     const escenas = Array.isArray(data.chapterArt) ? data.chapterArt : [];
     data.chapters.forEach(c => {
       const suyas = escenas.filter(e => e.chapter === c.number);
-      const personas = data.characters.filter(p => p.unlock === c.number);
-      const propios = grupos.filter(g => g.unlock === c.number);
-      if (!suyas.length && !personas.length && !propios.length) return;
+      if (!suyas.length) return;
       const abierto = visible({ unlock: c.number });
-      const piezas = suyas.length
-        ? suyas.map(e => tarjetaEscena(e, abierto)).join("")
-        : personas.map(tarjetaPersona).join("") + propios.map(tarjetaGrupo).join("");
+      const piezas = suyas.map(e => tarjetaEscena(e, abierto)).join("");
       const nombre = c.label || `Capítulo ${c.number}`;
       if (abierto) {
         html += `<h3 class="cast-head">${escapeHtml(nombre)}` +
@@ -536,10 +534,6 @@
         resto += piezas;
       }
     });
-    // lo que apunte a un capitulo que no existe no se pierde
-    const numeros = new Set(data.chapters.map(c => c.number));
-    resto += data.characters.filter(p => !numeros.has(p.unlock)).map(tarjetaPersona).join("") +
-             grupos.filter(g => !numeros.has(g.unlock)).map(tarjetaGrupo).join("");
     html += siguiente;
     if (resto) html += `<h3 class="cast-head cast-head-mute">Aún por revelar</h3>` + resto;
     return html;
