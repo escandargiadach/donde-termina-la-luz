@@ -479,6 +479,8 @@
   // Escenas en bucle: mp4 MUDOS con loop, que es un gif pero 17 veces mas ligero
   // (el mismo clip en gif pesaba 30 MB y en mp4 1,8). Mismo bloqueo por capitulo
   // que los retratos.
+  // 28-sep: la seccion «Escenas» se quito del index (Escandar: solo el trailer).
+  // Sin #sceneGrid esta funcion sale en la primera linea; se deja por si vuelve.
   function renderScenes() {
     const grid = document.getElementById("sceneGrid");
     const seccion = document.getElementById("escenas");
