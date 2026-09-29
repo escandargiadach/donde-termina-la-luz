@@ -56,7 +56,12 @@ window.BOOK_DATA = {
   chapterArt: [
     { chapter: 1, name: "La grabación de Gael", file: "assets/capitulos/cap01-01-la-grabacion-de-gael.webp", w: 1536, h: 1024 },
     { chapter: 1, name: "El muro de los nombres", file: "assets/capitulos/cap01-02-el-muro-de-los-nombres.webp", w: 1536, h: 1024 },
-    { chapter: 2, name: "Elian", file: "assets/capitulos/cap02-elian.webp", w: 1374, h: 1145 }
+    { chapter: 2, name: "Elian", file: "assets/capitulos/cap02-elian.webp", w: 1374, h: 1145 },
+    { chapter: 3, name: "Ansel y Neris en la estación olvidada", file: "assets/capitulos/cap03-01-ansel-y-neris-en-la-estacion-olvidada.webp", w: 1536, h: 1024 },
+    { chapter: 3, name: "Sava en la estación de bombeo", file: "assets/capitulos/cap03-02-sava-en-la-estacion-de-bombeo.webp", w: 1536, h: 1024 },
+    { chapter: 3, name: "Lucan contra Varek", file: "assets/capitulos/cap03-03-lucan-contra-varek.webp", w: 1536, h: 1024 },
+    { chapter: 3, name: "Neris desarma el anclaje", file: "assets/capitulos/cap03-04-neris-desarma-el-anclaje.webp", w: 1536, h: 1024 },
+    { chapter: 5, name: "Elías vuelve a la celda", file: "assets/capitulos/cap05-01-elias-vuelve-a-la-celda.webp", w: 1536, h: 1024 }
   ],
   characters: [
     { id: "gael", name: "Gael Altaren", file: "assets/personajes/gael-altaren.webp", w: 900, h: 1350, unlock: 1, section: "cam17" },
