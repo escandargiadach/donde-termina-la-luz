@@ -48,7 +48,6 @@
     unavailable: {},
     speed: 1,
     spoilers: true,  // true = proteger; el oyente puede apagarlo
-    castOrder: "faccion"   // "faccion" | "capitulo" (28-sep)
   };
 
   const saved = safeParse(localStorage.getItem(STORAGE_KEY));
@@ -77,7 +76,6 @@
   renderChapters();
   renderParts();
   updateSpoilerToggle();
-  updateCastOrder();
   renderCast();
   renderScenes();
   vigilarEscenas();
@@ -110,8 +108,6 @@
     elements.mobileMenu.addEventListener("click", (event) => { if (event.target.tagName === "A") closeMenu(); });
     elements.offlineButton.addEventListener("click", saveCurrentAudioOffline);
     document.getElementById("spoilerToggle")?.addEventListener("click", toggleSpoilers);
-    document.querySelectorAll(".cast-order [data-orden]").forEach(b =>
-      b.addEventListener("click", () => cambiarOrdenReparto(b.dataset.orden)));
     document.getElementById("castGrid")?.addEventListener("click", event => {
       const g = event.target.closest(".cast-group:not(.locked)");
       if (!g) return;
@@ -442,41 +438,8 @@
         </figure>`;
 
     const grupos = Array.isArray(data.groups) ? data.groups : [];
-    if (state.castOrder === "capitulo") {
-      pintarReparto(grid, repartoPorCapitulo(grupos, visible, tarjetaPersona, tarjetaGrupo));
-      return;
-    }
-    const secciones = Array.isArray(data.castSections) ? data.castSections : [];
-    const colocadas = new Set();
-    let html = "";
-    let pendientes = "";   // secciones que aun no ha abierto nadie: van sin nombre
-
-    secciones.forEach(s => {
-      const personas = data.characters.filter(p => p.section === s.id);
-      const propios = grupos.filter(g => g.section === s.id);
-      if (!personas.length && !propios.length) return;
-      personas.forEach(p => colocadas.add(p));
-      propios.forEach(g => colocadas.add(g));
-      const piezas = personas.map(tarjetaPersona).join("") + propios.map(tarjetaGrupo).join("");
-      // El encabezado es parte del spoiler: "Dientes de Ceniza" delata al grupo
-      // aunque las seis tarjetas esten tapadas. Mientras no se revele ninguna,
-      // sus tarjetas caen al bloque anonimo del final.
-      if (personas.some(visible) || propios.some(visible)) {
-        html += `<h3 class="cast-head">${escapeHtml(s.name)}` +
-                (s.realm ? `<span>${escapeHtml(s.realm)}</span>` : "") + `</h3>` + piezas;
-      } else {
-        pendientes += piezas;
-      }
-    });
-
-    // lo que no declare seccion (o declare una que no existe) no se pierde
-    const sueltas = data.characters.filter(p => !colocadas.has(p)).map(tarjetaPersona).join("") +
-                    grupos.filter(g => !colocadas.has(g)).map(tarjetaGrupo).join("");
-    if (pendientes || sueltas) {
-      html += `<h3 class="cast-head cast-head-mute">Aún por revelar</h3>` + pendientes + sueltas;
-    }
-
-    pintarReparto(grid, html);
+    // 28-sep (Escandar): se quito «Por facción»; el reparto es solo escenas por capítulo.
+    pintarReparto(grid, repartoPorCapitulo(grupos, visible, tarjetaPersona, tarjetaGrupo));
   }
 
   // updateOverallProgress corre en cada avance del audio: repintar solo si algo
@@ -636,29 +599,6 @@
     updateSpoilerToggle();
     renderCast();
     renderScenes();
-  }
-
-  // Orden del reparto: por faccion (el de siempre) o por capitulo, que muestra
-  // a los personajes apareciendo a medida que avanza el libro (Escandar, 28-sep).
-  function updateCastOrder() {
-    const orden = state.castOrder === "capitulo" ? "capitulo" : "faccion";
-    document.querySelectorAll(".cast-order [data-orden]").forEach(b =>
-      b.setAttribute("aria-pressed", String(b.dataset.orden === orden)));
-    const intro = document.getElementById("castIntro");
-    if (intro) {
-      intro.textContent = orden === "capitulo"
-        ? "Lo que pasa en cada capítulo, a medida que lo escuchas."
-        : "Agrupados por facción, en el orden en que el libro los presenta.";
-    }
-  }
-
-  function cambiarOrdenReparto(orden) {
-    if (orden !== "faccion" && orden !== "capitulo") return;
-    if (state.castOrder === orden) return;
-    state.castOrder = orden;
-    saveState();
-    updateCastOrder();
-    renderCast();
   }
 
   function renderParts() {
