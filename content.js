@@ -94,6 +94,7 @@ window.BOOK_DATA = {
     { chapter: 10, name: "Los archivos de la convergencia", file: "assets/capitulos/cap10-03-los-archivos-de-la-convergencia-v3.webp", w: 1536, h: 1024 },
     { chapter: 11, name: "Sevrin toma A-7", file: "assets/capitulos/cap11-01-sevrin-toma-a-7-v4.webp", w: 1536, h: 1024 },
     { chapter: 11, name: "Delyan paraliza a Kier", file: "assets/capitulos/cap11-02-delyan-paraliza-a-kier-v2.webp", w: 1536, h: 1024 },
+    { chapter: 11, name: "Reencuentro con Elías", file: "assets/capitulos/cap11-04-reencuentro-con-elias-v7.webp", w: 1536, h: 1024 },
     { chapter: 11, name: "La Corona de Nidum: junto al Prime", file: "assets/capitulos/cap11-05-la-corona-de-nidum-junto-al-prime-v2.webp", w: 1536, h: 1024 },
     { chapter: 12, name: "La Corona de día y la Mesa de Custodia", file: "assets/capitulos/cap12-01-la-corona-de-dia-y-la-mesa-de-custodia-v3.webp", w: 1536, h: 1024 },
     { chapter: 12, name: "Coris Korr contra Yvara Sareth", file: "assets/capitulos/cap12-03-coris-korr-contra-yvara-sareth.webp", w: 1536, h: 1024 },
