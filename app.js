@@ -110,7 +110,7 @@
     elements.offlineButton.addEventListener("click", saveCurrentAudioOffline);
     document.getElementById("spoilerToggle")?.addEventListener("click", toggleSpoilers);
     document.getElementById("castGrid")?.addEventListener("click", event => {
-      const g = event.target.closest(".cast-group:not(.locked)");
+      const g = event.target.closest(".cast-group:not(.locked), .cast-retrato:not(.locked)");
       if (!g) return;
       const src = g.querySelector("[data-abrir]")?.dataset.abrir || g.querySelector("img")?.getAttribute("src");
       if (src) abrirLupa(src);
@@ -391,6 +391,22 @@
         });
 
         wrap.appendChild(button);
+        // 30-sep (Escandar): atajo a las imagenes del capitulo, solo cuando ya
+        // se pueden ver (capitulo terminado, o spoilers apagados)
+        const nImgs = (data.chapterArt || []).filter(e => e.chapter === chapter.number).length;
+        if (nImgs && (state.spoilers === false || isDone)) {
+          const ver = document.createElement("button");
+          ver.type = "button";
+          ver.className = "chapter-imgs";
+          ver.title = "Ver las imágenes de este capítulo";
+          ver.setAttribute("aria-label", `Ver ${nImgs} ${nImgs === 1 ? "imagen" : "imágenes"} de ${chapter.label || "capítulo " + chapter.number}`);
+          ver.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span>${nImgs}</span>`;
+          ver.addEventListener("click", event => {
+            event.stopPropagation();
+            verImagenesCapitulo(chapter.number);
+          });
+          wrap.appendChild(ver);
+        }
         wrap.appendChild(doneToggle);
         elements.chapterList.appendChild(wrap);
       });
@@ -483,14 +499,48 @@
   // recorrer todas las escenas ya vistas. Por defecto solo queda abierto el
   // ultimo capitulo revelado; lo que el oyente abra o cierre a mano se recuerda
   // en state.capsAbiertos (clave = numero de capitulo, o "sig"/"resto").
-  function desplegable(clave, titulo, sub, piezas, cuantas, mute, porDefecto) {
+  function verImagenesCapitulo(numero) {
+    state.capsAbiertos[String(numero)] = true;
+    saveState();
+    renderCast();
+    const d = document.querySelector(`details.cast-cap[data-cap="${numero}"]`);
+    if (!d) return;
+    d.open = true;
+    // scroll-margin-top en .cast-cap deja libre la barra fija; se repite una
+    // vez porque las imagenes de arriba pueden terminar de ubicarse despues
+    d.scrollIntoView({ block: "start", behavior: "instant" });
+    setTimeout(() => {
+      if (Math.abs(d.getBoundingClientRect().top - 84) > 40) d.scrollIntoView({ block: "start", behavior: "instant" });
+    }, 700);
+  }
+
+  // 30-sep (Escandar): retratos frontales de referencia, en un desplegable
+  // cerrado al final. Cerrado no descarga nada (loading=lazy dentro de un
+  // <details> cerrado); solo salen los personajes ya revelados.
+  function bloqueRetratos(visible) {
+    const todos = Array.isArray(data.portraits) ? data.portraits : [];
+    if (!todos.length) return "";
+    const suyos = todos.filter(p => visible(p));
+    const faltan = todos.length - suyos.length;
+    let piezas = suyos.map(p => `<figure class="cast-card cast-retrato">
+        <img src="${p.file}" alt="Retrato de ${escapeHtml(p.name)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async">
+        <figcaption><strong>${escapeHtml(p.name)}</strong></figcaption>
+      </figure>`).join("");
+    if (faltan) piezas += `<figure class="cast-card cast-retrato locked">
+        <span class="cast-locked-art" aria-hidden="true">✦</span>
+        <figcaption><strong>+${faltan}</strong><span>Se revelan más adelante</span></figcaption>
+      </figure>`;
+    return desplegable("retratos", "Retratos de personajes", "de frente", piezas, suyos.length, false, false, "cast-cap-retratos");
+  }
+
+  function desplegable(clave, titulo, sub, piezas, cuantas, mute, porDefecto, claseGrid) {
     const guardado = state.capsAbiertos[clave];
     const abierto = guardado === undefined ? porDefecto : guardado;
     return `<details class="cast-cap${mute ? " cast-cap-mute" : ""}" data-cap="${clave}" data-open="${abierto ? 1 : 0}"${abierto ? " open" : ""}>` +
       `<summary class="cast-head${mute ? " cast-head-mute" : ""}">${escapeHtml(titulo)}` +
       (sub ? `<span>${escapeHtml(sub)}</span>` : "") +
       `<em class="cast-cap-n">${cuantas} ${cuantas === 1 ? "imagen" : "imágenes"}</em></summary>` +
-      `<div class="cast-cap-grid">${piezas}</div></details>`;
+      `<div class="cast-cap-grid${claseGrid ? " " + claseGrid : ""}">${piezas}</div></details>`;
   }
 
   function repartoPorCapitulo(grupos, visible, tarjetaPersona, tarjetaGrupo) {
@@ -517,6 +567,7 @@
       a.c.title, a.piezas, a.n, false, i === abiertos.length - 1)).join("");
     if (siguiente) html += desplegable("sig", siguiente.titulo, "", siguiente.piezas, siguiente.n, true, !abiertos.length);
     if (resto) html += desplegable("resto", "Aún por revelar", "", resto, nResto, true, false);
+    html += bloqueRetratos(visible);
     return html;
   }
 

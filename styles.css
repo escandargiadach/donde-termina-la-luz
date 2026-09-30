@@ -200,7 +200,7 @@ main{width:min(1460px,100%);margin:0 auto}
 .cast-head-mute{color:var(--muted)}
 .cast-head-mute::after{background:linear-gradient(90deg,rgba(137,162,178,.22),transparent)}
 /* Desplegable por capitulo (30-sep): el summary reusa .cast-head */
-.cast-cap{grid-column:1/-1;min-width:0}
+.cast-cap{grid-column:1/-1;min-width:0;scroll-margin-top:84px}
 .cast-cap:first-child>.cast-head{margin-top:0}
 .cast-cap>summary{cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent;padding:6px 0;margin-bottom:0}
 .cast-cap>summary::-webkit-details-marker{display:none}
@@ -209,6 +209,16 @@ main{width:min(1460px,100%);margin:0 auto}
 .cast-cap>summary:focus-visible{outline:2px solid var(--ice);outline-offset:4px;border-radius:6px}
 .cast-cap-n{order:10;flex:none;font:600 11px/1 system-ui,sans-serif;font-style:normal;color:var(--muted);letter-spacing:.06em}
 .cast-cap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start;margin-top:14px}
+/* Retratos frontales (30-sep): cuadricula mas densa, tocar abre en grande */
+.cast-cap-retratos{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.cast-retrato{cursor:zoom-in}
+.cast-retrato figcaption{padding:44px 14px 14px}
+.cast-retrato strong{font-size:19px}
+.cast-retrato.locked{cursor:default;aspect-ratio:2/3;display:grid;place-items:center}
+/* Atajo a las imagenes en la lista de capitulos */
+.chapter-imgs{display:flex;align-items:center;gap:5px;flex-shrink:0;height:34px;padding:0 10px;margin-right:8px;border:1px solid var(--line);border-radius:17px;background:transparent;color:var(--muted);font:700 12px/1 system-ui,sans-serif;cursor:pointer;transition:.15s ease}
+.chapter-imgs svg{width:17px;height:17px}
+.chapter-imgs:hover,.chapter-imgs:focus-visible{color:var(--ice);border-color:rgba(143,209,231,.45)}
 
 /* Interruptor de anti-spoiler. Encendido por defecto: protege salvo que el
    oyente diga lo contrario. */
@@ -236,7 +246,7 @@ main{width:min(1460px,100%);margin:0 auto}
 /* aspect-ratio:auto y no 2/1: cada retrato de grupo respeta su propia forma. Los
    Dientes de Ceniza son 2:1, pero "Las dos madres" es casi cuadrado y con el 2/1
    forzado se le cortaba media escena. */
-.cast-group img{aspect-ratio:auto;object-position:50% 50%}
+.cast-group img{aspect-ratio:auto 3/2;object-position:50% 50%}
 .cast-group figcaption{padding:52px 24px 20px}
 .cast-group figcaption span{color:var(--muted);font-size:12px;letter-spacing:.04em;text-transform:none;font-weight:400}
 .cast-lupa{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:rgba(8,16,24,.72);color:var(--ink);font-size:17px;line-height:1;cursor:zoom-in}
@@ -381,6 +391,10 @@ input[type="range"]{width:100%;height:4px;accent-color:var(--ice);cursor:pointer
   .part-grid{grid-template-columns:1fr}
   .cast-grid{grid-template-columns:1fr;gap:14px}
   .cast-cap-grid{grid-template-columns:1fr;gap:14px}
+  .cast-cap-retratos{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .cast-retrato strong{font-size:16px}
+  .cast-retrato figcaption{padding:36px 10px 10px}
+  .chapter-imgs{padding:0 8px;margin-right:6px}
   .cast-head{font-size:21px;flex-wrap:wrap;row-gap:6px}
   .part-card{min-height:200px}
   .saga-card{padding:28px 22px}
