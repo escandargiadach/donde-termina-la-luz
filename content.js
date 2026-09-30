@@ -197,6 +197,8 @@ window.BOOK_DATA = {
     { chapter: 25, name: "Pelea contra los Dientes de Ceniza", file: "assets/capitulos/cap25-03-pelea-contra-los-dientes-de-ceniza.webp", w: 1536, h: 1024 },
     { chapter: 25, name: "Rask aparece sobre la roca", file: "assets/capitulos/cap25-04-rask-aparece-sobre-la-roca-v3.webp", w: 1536, h: 1024 },
     { chapter: 25, name: "Atrapados en las redes al rojo", file: "assets/capitulos/cap25-05-atrapados-en-las-redes-al-rojo-v2.webp", w: 1536, h: 1024 },
+    { chapter: 26, name: "La pesadilla de la caída y el fuego", file: "assets/capitulos/cap26-01-la-pesadilla-de-la-caida-y-el-fuego-v6.webp", w: 1536, h: 1024 },
+    { chapter: 26, name: "Atrapada entre los escombros", file: "assets/capitulos/cap26-01-la-pesadilla-de-la-caida-y-el-fuego-v7.webp", w: 1536, h: 1024 },
     { chapter: 26, name: "Aprender a caminar y el empujón", file: "assets/capitulos/cap26-02-aprender-a-caminar-y-el-empujon.webp", w: 1536, h: 1024 },
     { chapter: 26, name: "El número 17 en la pared", file: "assets/capitulos/cap26-03-el-numero-17-en-la-pared.webp", w: 1536, h: 1024 },
     { chapter: 26, name: "La transmisión de CAM-17 y el rostro de Lucan", file: "assets/capitulos/cap26-04-la-transmision-de-cam-17-y-el-rostro-de-v3.webp", w: 1536, h: 1024 },
