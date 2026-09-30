@@ -199,6 +199,16 @@ main{width:min(1460px,100%);margin:0 auto}
 .cast-head::after{content:"";order:9;flex:1;height:1px;background:linear-gradient(90deg,rgba(143,209,231,.3),transparent)}
 .cast-head-mute{color:var(--muted)}
 .cast-head-mute::after{background:linear-gradient(90deg,rgba(137,162,178,.22),transparent)}
+/* Desplegable por capitulo (30-sep): el summary reusa .cast-head */
+.cast-cap{grid-column:1/-1;min-width:0}
+.cast-cap:first-child>.cast-head{margin-top:0}
+.cast-cap>summary{cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent;padding:6px 0;margin-bottom:0}
+.cast-cap>summary::-webkit-details-marker{display:none}
+.cast-cap>summary::before{content:"";flex:none;align-self:center;width:9px;height:9px;border-right:2px solid var(--ice);border-bottom:2px solid var(--ice);transform:rotate(-45deg);transition:transform .2s ease}
+.cast-cap[open]>summary::before{transform:rotate(45deg) translate(-2px,-2px)}
+.cast-cap>summary:focus-visible{outline:2px solid var(--ice);outline-offset:4px;border-radius:6px}
+.cast-cap-n{order:10;flex:none;font:600 11px/1 system-ui,sans-serif;font-style:normal;color:var(--muted);letter-spacing:.06em}
+.cast-cap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start;margin-top:14px}
 
 /* Interruptor de anti-spoiler. Encendido por defecto: protege salvo que el
    oyente diga lo contrario. */
@@ -370,6 +380,8 @@ input[type="range"]{width:100%;height:4px;accent-color:var(--ice);cursor:pointer
   .chapter-done-toggle{margin-right:12px}
   .part-grid{grid-template-columns:1fr}
   .cast-grid{grid-template-columns:1fr;gap:14px}
+  .cast-cap-grid{grid-template-columns:1fr;gap:14px}
+  .cast-head{font-size:21px;flex-wrap:wrap;row-gap:6px}
   .part-card{min-height:200px}
   .saga-card{padding:28px 22px}
   .saga-card .primary-button{width:100%}

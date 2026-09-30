@@ -56,6 +56,7 @@
   state.durations ||= {};
   state.completed ||= {};
   state.unavailable ||= {};
+  state.capsAbiertos ||= {};   // desplegables de escenas que el oyente abrio o cerro a mano
 
   let selectedIndex = clamp(Number(state.currentIndex) || 0, 0, data.chapters.length - 1);
   let pendingAutoplay = false;
@@ -114,6 +115,7 @@
       const src = g.querySelector("[data-abrir]")?.dataset.abrir || g.querySelector("img")?.getAttribute("src");
       if (src) abrirLupa(src);
     });
+    document.getElementById("castGrid")?.addEventListener("toggle", recordarDesplegable, true);
 
     elements.audio.addEventListener("loadedmetadata", onLoadedMetadata);
     elements.audio.addEventListener("timeupdate", onTimeUpdate);
@@ -477,29 +479,57 @@
       </figure>`;
   }
 
+  // 30-sep (Escandar): cada capitulo es un desplegable, para no tener que
+  // recorrer todas las escenas ya vistas. Por defecto solo queda abierto el
+  // ultimo capitulo revelado; lo que el oyente abra o cierre a mano se recuerda
+  // en state.capsAbiertos (clave = numero de capitulo, o "sig"/"resto").
+  function desplegable(clave, titulo, sub, piezas, cuantas, mute, porDefecto) {
+    const guardado = state.capsAbiertos[clave];
+    const abierto = guardado === undefined ? porDefecto : guardado;
+    return `<details class="cast-cap${mute ? " cast-cap-mute" : ""}" data-cap="${clave}" data-open="${abierto ? 1 : 0}"${abierto ? " open" : ""}>` +
+      `<summary class="cast-head${mute ? " cast-head-mute" : ""}">${escapeHtml(titulo)}` +
+      (sub ? `<span>${escapeHtml(sub)}</span>` : "") +
+      `<em class="cast-cap-n">${cuantas} ${cuantas === 1 ? "imagen" : "imágenes"}</em></summary>` +
+      `<div class="cast-cap-grid">${piezas}</div></details>`;
+  }
+
   function repartoPorCapitulo(grupos, visible, tarjetaPersona, tarjetaGrupo) {
-    let html = "", siguiente = "", resto = "";
     const escenas = Array.isArray(data.chapterArt) ? data.chapterArt : [];
+    const abiertos = [];
+    let siguiente = null, resto = "", nResto = 0;
     data.chapters.forEach(c => {
       const suyas = escenas.filter(e => e.chapter === c.number);
       if (!suyas.length) return;
       const abierto = visible({ unlock: c.number });
       const piezas = suyas.map(e => tarjetaEscena(e, abierto)).join("");
-      const nombre = c.label || `Capítulo ${c.number}`;
       if (abierto) {
-        html += `<h3 class="cast-head">${escapeHtml(nombre)}` +
-                `<span>${escapeHtml(c.title)}</span></h3>` + piezas;
-      } else if (!siguiente && piezas) {
+        abiertos.push({ c, piezas, n: suyas.length });
+      } else if (!siguiente) {
         // un capitulo con escena pero sin gente nueva no gasta el adelanto
         const cual = c.label ? `el ${c.label}` : `el capítulo ${c.number}`;
-        siguiente = `<h3 class="cast-head cast-head-mute">Al terminar ${escapeHtml(cual)}</h3>` + piezas;
+        siguiente = { titulo: `Al terminar ${cual}`, piezas, n: suyas.length };
       } else {
         resto += piezas;
+        nResto += suyas.length;
       }
     });
-    html += siguiente;
-    if (resto) html += `<h3 class="cast-head cast-head-mute">Aún por revelar</h3>` + resto;
+    let html = abiertos.map((a, i) => desplegable(String(a.c.number), a.c.label || `Capítulo ${a.c.number}`,
+      a.c.title, a.piezas, a.n, false, i === abiertos.length - 1)).join("");
+    if (siguiente) html += desplegable("sig", siguiente.titulo, "", siguiente.piezas, siguiente.n, true, !abiertos.length);
+    if (resto) html += desplegable("resto", "Aún por revelar", "", resto, nResto, true, false);
     return html;
+  }
+
+  // el evento toggle no burbujea: se escucha en captura sobre el reparto.
+  // Al pintar un <details open> el navegador tambien dispara toggle; ese no es
+  // del oyente y se reconoce porque coincide con lo pintado (data-open).
+  function recordarDesplegable(event) {
+    const d = event.target;
+    if (!d.matches || !d.matches("details.cast-cap")) return;
+    if ((d.dataset.open === "1") === d.open) return;
+    state.capsAbiertos[d.dataset.cap] = d.open;
+    d.dataset.open = d.open ? "1" : "0";
+    saveState();
   }
 
   // Escenas en bucle: mp4 MUDOS con loop, que es un gif pero 17 veces mas ligero
