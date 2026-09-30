@@ -183,6 +183,7 @@ window.BOOK_DATA = {
     { chapter: 21, name: "El entrenamiento empieza con una piedra", file: "assets/capitulos/cap21-01-el-entrenamiento-empieza-con-una-piedra.webp", w: 1536, h: 1024 },
     { chapter: 21, name: "La espada de Hielo Rojo se fractura", file: "assets/capitulos/cap21-02-la-espada-de-hielo-rojo-se-fractura-v3.webp", w: 1536, h: 1024 },
     { chapter: 21, name: "Cena en el refugio y la espada de Scar", file: "assets/capitulos/cap21-04-cena-en-el-refugio-y-la-espada-de-scar.webp", w: 1536, h: 1024 },
+    { chapter: 22, name: "El nuevo Kier y su mazo", file: "assets/capitulos/cap22-01-el-nuevo-kier-y-su-mazo-v8.webp", w: 1536, h: 1024 },
     { chapter: 22, name: "Kier la levanta del suelo", file: "assets/capitulos/cap22-02-kier-la-levanta-del-suelo-v3.webp", w: 1536, h: 1024 },
     { chapter: 23, name: "La comida quemada", file: "assets/capitulos/cap23-02-la-comida-quemada.webp", w: 1536, h: 1024 },
     { chapter: 23, name: "El collar de Hielo Negro", file: "assets/capitulos/cap23-03-el-collar-de-hielo-negro-v2.webp", w: 1536, h: 1024 },
