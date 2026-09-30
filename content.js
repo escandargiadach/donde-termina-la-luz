@@ -131,6 +131,7 @@ window.BOOK_DATA = {
     { chapter: 24, name: "El tren de Solenne baja por la cara exterior del Muro", file: "assets/capitulos/cap24-01-el-tren-de-solenne-baja-por-la-cara-exte.webp", w: 1536, h: 1024 },
     { chapter: 24, name: "Comida picante al borde de la plataforma", file: "assets/capitulos/cap24-02-comida-picante-al-borde-de-la-plataforma.webp", w: 1536, h: 1024 },
     { chapter: 24, name: "El convoy entra en tierra sin red", file: "assets/capitulos/cap24-03-el-convoy-entra-en-tierra-sin-red-v3.webp", w: 1536, h: 1024 },
+    { chapter: 24, name: "Koren y los camiones de Ordel en la última parada", file: "assets/capitulos/cap24-04-koren-y-los-camiones-de-ordel-en-la-ulti-v4.webp", w: 1536, h: 1024 },
     { chapter: 25, name: "Emboscada y vuelco del vehículo", file: "assets/capitulos/cap25-01-emboscada-y-vuelco-del-vehiculo.webp", w: 1536, h: 1024 },
     { chapter: 25, name: "Kier arranca la puerta y la lanza mata a Calev", file: "assets/capitulos/cap25-02-kier-arranca-la-puerta-y-la-lanza-mata-a-v2.webp", w: 1536, h: 1024 },
     { chapter: 25, name: "Pelea contra los Dientes de Ceniza", file: "assets/capitulos/cap25-03-pelea-contra-los-dientes-de-ceniza.webp", w: 1536, h: 1024 },
