@@ -116,7 +116,7 @@ window.BOOK_DATA = {
     { chapter: 18, name: "Despertar integrada: “Bienvenida a la familia”", file: "assets/capitulos/cap18-02-despertar-integrada-bienvenida-a-la-fami-v3.webp", w: 1536, h: 1024 },
     { chapter: 19, name: "El orbe contra Elías y Duvran", file: "assets/capitulos/cap19-01-el-orbe-contra-elias-y-duvran.webp", w: 1536, h: 1024 },
     { chapter: 19, name: "La sala de contingencias de Nethar", file: "assets/capitulos/cap19-02-la-sala-de-contingencias-de-nethar-v2.webp", w: 1536, h: 1024 },
-    { chapter: 20, name: "El taller Draevin", file: "assets/capitulos/cap20-01-el-taller-draevin.webp", w: 1536, h: 1024 },
+    { chapter: 20, name: "El taller Draevin", file: "assets/capitulos/cap20-01-el-taller-draevin-v3.webp", w: 1536, h: 1024 },
     { chapter: 20, name: "El orbe ante los Draevin: la cuchilla de Selq", file: "assets/capitulos/cap20-02-el-orbe-ante-los-draevin-la-cuchilla-de.webp", w: 1536, h: 1024 },
     { chapter: 20, name: "Las botas congeladas de Elías", file: "assets/capitulos/cap20-03-las-botas-congeladas-de-elias.webp", w: 1536, h: 1024 },
     { chapter: 20, name: "La estación de carga", file: "assets/capitulos/cap20-04-la-estacion-de-carga.webp", w: 1536, h: 1024 },
