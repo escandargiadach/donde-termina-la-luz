@@ -8,7 +8,7 @@ window.BOOK_DATA = {
     volume: "Libro II",
     author: "Escandar Giadach",
     audioBaseUrl: "audio/",
-    audioVersion: 14,
+    audioVersion: 15,
     frontMatter: { title: "Presentación", kicker: "Antes de empezar", file: "00-donde-termina-la-luz.mp3", seconds: 7 }
   },
   // Retratos. "unlock" es el capitulo en el que el libro NOMBRA por primera vez
@@ -338,7 +338,7 @@ window.BOOK_DATA = {
     { number: 12, title: "Casi como en casa", part: "Parte II", file: "12-casi-como-en-casa.mp3", seconds: 1530 },
     { number: 13, title: "Derrotas", part: "Parte II", file: "13-derrotas.mp3", seconds: 1857 },
     { number: 14, title: "El Rojo", part: "Parte II", file: "14-el-rojo.mp3", seconds: 2350 },
-    { number: 15, title: "Donde termina el mapa", part: "Parte II", file: "15-donde-termina-el-mapa.mp3", seconds: 1804 },
+    { number: 15, title: "Donde termina el mapa", part: "Parte II", file: "15-donde-termina-el-mapa.mp3", seconds: 1807 },
     { number: 16, title: "Hielo Rojo", part: "Parte II", file: "16-hielo-rojo.mp3", seconds: 1466 },
     { number: 17, title: "El apellido", part: "Parte III", file: "17-el-apellido.mp3", seconds: 1350 },
     { number: 18, title: "Bienvenida a la familia", part: "Parte III", file: "18-bienvenida-a-la-familia.mp3", seconds: 445 },
