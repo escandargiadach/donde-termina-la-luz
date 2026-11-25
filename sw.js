@@ -1,10 +1,14 @@
 // REGLA (heredada del Libro I): todo cambio a index.html, styles.css, content.js,
 // app.js o nieve.js exige subir SHELL_CACHE antes de publicar.
-const SHELL_CACHE = "el-ciclo-inmovil-libro2-shell-v100";
+const SHELL_CACHE = "el-ciclo-inmovil-libro2-shell-v101";
 // Mismo nombre que AUDIO_CACHE en app.js ("Guardar sin conexión"). Si no
 // coinciden, el activate de abajo borra los capitulos guardados. No subirlo sin
 // motivo: vacia lo que cada oyente guardo.
 const AUDIO_CACHE = "el-ciclo-inmovil-libro2-audio-v1";
+// 25-nov: el Libro III vive en el MISMO origen (escandargiadach.github.io/
+// los-duenos-del-sol/) y las caches son por origen. El activate solo limpia las
+// de este libro; antes borraba tambien el audio sin conexion del Libro III.
+const PREFIJO = "el-ciclo-inmovil-libro2-";
 const SHELL = [
   "./",
   "./index.html",
@@ -30,7 +34,7 @@ self.addEventListener("install", event => {
 
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(key => ![SHELL_CACHE, AUDIO_CACHE].includes(key)).map(key => caches.delete(key))))
+    caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith(PREFIJO) && ![SHELL_CACHE, AUDIO_CACHE].includes(key)).map(key => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
